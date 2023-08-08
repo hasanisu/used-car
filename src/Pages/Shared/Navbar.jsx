@@ -1,16 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Navbar = () => {
 	
-	
+	const user ={}
     return (
 
 <div className="navbar bg-base-100">
   <div className="flex-1">
-    <a className="btn btn-ghost normal-case text-2xl">UsedCar</a>
+    <a className="btn btn-ghost normal-case text-2xl">
+      UsedCar
+      </a>
   </div>
-  <div className="flex-none gap-2">
+ {
+  user.uid? 
+  <>
+   <div className="flex-none gap-2">
     <div className="form-control">
       <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
     </div>
@@ -32,6 +38,35 @@ const Navbar = () => {
       </ul>
     </div>
   </div>
+  </>
+
+  :
+
+  <>
+  <div className="navbar-center hidden lg:flex">
+    <ul className="menu menu-horizontal px-1">
+      <li><Link>HOME</Link></li>
+      <li tabIndex={0}>
+        <details>
+          <summary>FOR DEALER</summary>
+          <ul className="p-2">
+            <li><Link>Bangladesh</Link></li>
+            <li><Link>Pakistan</Link></li>
+            <li><Link>India</Link></li>
+            <li><Link>Africa</Link></li>
+            
+          </ul>
+        </details>
+      </li>
+      <li><a>INQUERY</a></li>
+    </ul>
+  </div>
+  <div className="navbar-end">
+    <a className="btn">Button</a>
+  </div>
+  
+  </>
+ }
 </div>
     );
 };

@@ -1,0 +1,79 @@
+[
+    {
+        "_id":"01",
+        "catagoryId":"1",
+        "maker":"Toyota",
+        "model":"Toyota Aqua",
+        "price":"2,988",
+        "kilomter":"59,446",
+        "transmission":"automatic",
+        "color":"blue",
+        "img":"https://i.ibb.co/XYZMX66/aqua.jpg"
+    },
+    {
+        "_id":"02",
+        "catagoryId":"1",
+        "maker":"Toyota",
+        "model":"Toyota Raize",
+        "price":"5,988",
+        "kilomter":"59,446",
+        "transmission":"automatic",
+        "color":"blue",
+        "img":"https://i.ibb.co/SsyBrbX/raize.jpg"
+    },
+    {
+        "_id":"03",
+        "catagoryId":"1",
+        "maker":"Toyota",
+        "model":"Toyota Vitz",
+        "price":"2,988",
+        "kilomter":"59,446",
+        "transmission":"automatic",
+        "color":"blue",
+        "img":"https://i.ibb.co/G3zrXPt/vitz.jpg"
+    },
+    {
+        "_id":"04",
+        "catagoryId":"1",
+        "maker":"Toyota",
+        "model":"Toyota Auris",
+        "price":"2,988",
+        "kilomter":"59,446",
+        "transmission":"automatic",
+        "color":"blue",
+        "img":"https://i.ibb.co/pvNxBdc/auris.jpg"
+    },
+    {
+        "_id":"05",
+        "catagoryId":"1",
+        "maker":"Toyota",
+        "model":"Toyota Aqua",
+        "price":"2,988",
+        "kilomter":"59,446",
+        "transmission":"automatic",
+        "color":"blue",
+        "img":"https://i.ibb.co/XYZMX66/aqua.jpg"
+    },
+    {
+        "_id":"06",
+        "catagoryId":"2",
+        "maker":"Nissan",
+        "model":"Nissan Note",
+        "price":"2,988",
+        "kilomter":"59,446",
+        "transmission":"automatic",
+        "color":"blue",
+        "img":"https://i.ibb.co/0VvkQFm/note.jpg"
+    },
+    {
+        "_id":"07",
+        "catagoryId":"3",
+        "maker":"Suzuki",
+        "model":"Suzuki Swift",
+        "price":"2,988",
+        "kilomter":"59,446",
+        "transmission":"automatic",
+        "color":"blue",
+        "img":"https://i.ibb.co/kDfBG8Y/swift.jpg"
+    }
+]
