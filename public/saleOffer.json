@@ -8,6 +8,7 @@
         "kilomter":"59,446",
         "transmission":"automatic",
         "color":"blue",
+        "sale":"12",
         "img":"https://i.ibb.co/XYZMX66/aqua.jpg"
     },
     {
@@ -19,6 +20,7 @@
         "kilomter":"59,446",
         "transmission":"automatic",
         "color":"blue",
+        "sale":"8",
         "img":"https://i.ibb.co/SsyBrbX/raize.jpg"
     },
     {
@@ -30,6 +32,7 @@
         "kilomter":"59,446",
         "transmission":"automatic",
         "color":"blue",
+        "sale":"4",
         "img":"https://i.ibb.co/G3zrXPt/vitz.jpg"
     },
     {
@@ -41,6 +44,7 @@
         "kilomter":"59,446",
         "transmission":"automatic",
         "color":"blue",
+        "sale":"18",
         "img":"https://i.ibb.co/pvNxBdc/auris.jpg"
     },
     {
@@ -52,6 +56,7 @@
         "kilomter":"59,446",
         "transmission":"automatic",
         "color":"blue",
+        "sale":"9",
         "img":"https://i.ibb.co/XYZMX66/aqua.jpg"
     },
     {
@@ -63,28 +68,31 @@
         "kilomter":"59,446",
         "transmission":"automatic",
         "color":"blue",
+        "sale":"13",
         "img":"https://i.ibb.co/0VvkQFm/note.jpg"
     },
     {
-        "_id":"07",
-        "catagoryId":"3",
-        "maker":"Suzuki",
-        "model":"Suzuki Swift",
+        "_id":"06",
+        "catagoryId":"2",
+        "maker":"Nissan",
+        "model":"Nissan Note",
         "price":"2,988",
         "kilomter":"59,446",
         "transmission":"automatic",
         "color":"blue",
-        "img":"https://i.ibb.co/kDfBG8Y/swift.jpg"
+        "sale":"13",
+        "img":"https://i.ibb.co/0VvkQFm/note.jpg"
     },
     {
-        "_id":"08",
-        "catagoryId":"3",
-        "maker":"Suzuki",
-        "model":"Suzuki Swift",
+        "_id":"06",
+        "catagoryId":"2",
+        "maker":"Nissan",
+        "model":"Nissan Note",
         "price":"2,988",
         "kilomter":"59,446",
         "transmission":"automatic",
         "color":"blue",
-        "img":"https://i.ibb.co/kDfBG8Y/swift.jpg"
+        "sale":"13",
+        "img":"https://i.ibb.co/0VvkQFm/note.jpg"
     }
 ]

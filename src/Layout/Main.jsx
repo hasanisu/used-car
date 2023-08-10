@@ -8,13 +8,13 @@ const Main = () => {
         <div >
             <div> <Navbar></Navbar></div>
 
-            <div className="flex">
-                <div className=''>
-                    <CarCategory />
-                </div>
-                <div className='flex-auto w-64 pl-10'>
+            <div className="lg:flex">
+                <div className='flex-auto w-96'>
                     <Outlet></Outlet>
                 </div >
+                <div className='w-80 pl-6'>
+                    <CarCategory />
+                </div>
 
             </div>
 

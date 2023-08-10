@@ -16,7 +16,7 @@ const HomeBanner = () => {
         pagination={{
           dynamicBullets: true,
         }}
-        modules={[Pagination, Autoplay, EffectFade]}
+        modules={[Autoplay, EffectFade]}
         autoplay={true}
         effect='fade'
         className="app  rounded-lg"
