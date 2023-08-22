@@ -1,0 +1,60 @@
+[
+    {   
+    "maker":"toyota",    
+    "brand_name":"Toyota Aqua",
+        "brand_id":"01"
+    },
+    {
+       
+        "maker":"toyota",
+        "brand_name":"Toyota Prius",
+        "brand_id":"02"
+    },
+    {
+        
+        "maker":"suzuki",
+        "brand_name":"Suzuki Swift",
+        "brand_id":"03"
+    },
+    {
+        
+        "maker":"suzuki",
+        "brand_name":"Suzuki Wagon",
+        "brand_id":"04"
+    },
+    {
+       
+        "maker":"suzuki",
+        "brand_name":"Suzuki one",
+        "brand_id":"05"
+    },
+    {   
+    "maker":"daihatsu",    
+    "brand_name":"Daihatau Mira",
+        "brand_id":"01"
+    },
+    {
+       
+        "maker":"honda",
+        "brand_name":"Honda Fit",
+        "brand_id":"02"
+    },
+    {
+        
+        "maker":"honda",
+        "brand_name":"Honda Freed",
+        "brand_id":"03"
+    },
+    {
+        
+        "maker":"mazda",
+        "brand_name":"Mazda Rx5",
+        "brand_id":"04"
+    },
+    {
+       
+        "maker":"nissan",
+        "brand_name":"Nissan Note",
+        "brand_id":"05"
+    }
+]

@@ -1,5 +1,4 @@
 import React from 'react';
-import Catatory from '../Catagory/Catatory';
 import HomeBanner from '../HomeBanner/HomeBanner';
 import NewArrivals from '../NewArrivals/NewArrivals';
 import SaleOnCar from '../SaleOnCar/SaleOnCar';
@@ -14,7 +13,7 @@ const Home = () => {
             <VehicalSearch/>
             <NewArrivals/>
             <SaleOnCar/>
-            <Catatory />
+            
             
             
     

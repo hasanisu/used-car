@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NewArrivalCard = ({arrival}) => {
-    const {title, price, img,kilomter, _id, sale } = arrival;
+const DetailsCard = ({arrival}) => {
+    const {brand_name, price, img,kilometer, _id, sale } = arrival;
     return (
         <div className="card shadow-xl image-full">
             <figure><img src={img} alt="Shoes" className='p-2 rounded-3xl'/></figure>
             <div className="card-body">
-                <h2 className="card-title">{title}</h2>
-                <span>killometer: {kilomter}</span>
+                <h2 className="card-title">{brand_name}</h2>
+                <span>kilometer: {kilometer}</span>
                 <span>Price: ${price}</span>
                 {
-                    arrival.sale && 
+                    arrival.sale > 0 && 
                     <p>Save {sale}%</p>
     
                 }
@@ -23,4 +23,4 @@ const NewArrivalCard = ({arrival}) => {
     );
 };
 
-export default NewArrivalCard;
+export default DetailsCard;

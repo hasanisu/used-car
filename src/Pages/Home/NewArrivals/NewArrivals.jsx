@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import NewArrivalCard from '../../../Component/Card/NewArrivalCard';
+import DetailsCard from '../../../Component/Card/DetailsCard';
+
 
 const NewArrivals = () => {
     const [newArrival, setNewArrival ] = useState([])
     useEffect(()=>{
-        fetch('arrival.json')
+        fetch('http://localhost:5000/new-arrivals')
         .then(res => res.json())
         .then(data => setNewArrival(data))
     },[])
@@ -18,15 +19,15 @@ const NewArrivals = () => {
                 <button className="btn btn-sm btn-outline btn-primary">Select More</button>
             </div>
 
-            <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10 '>
+            <div className='grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-10 '>
                 {
-                    newArrival.map(arrival => <NewArrivalCard
+                    newArrival.map(arrival => <DetailsCard
                     key={arrival._id}
                     arrival={arrival}
 
                     >
 
-                    </NewArrivalCard>)
+                    </DetailsCard>)
                 }
             </div>
 

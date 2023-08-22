@@ -19,11 +19,11 @@ const HomeBanner = () => {
         modules={[Autoplay, EffectFade]}
         autoplay={true}
         effect='fade'
-        className="app  rounded-lg"
+        className="app rounded-lg"
       >
-        <SwiperSlide > <img className="h-96"  src="https://i.ibb.co/K58sjnn/car-1.jpg" alt="" /> </SwiperSlide>
-        <SwiperSlide> <img className=" h-96" src="https://i.ibb.co/346jKYv/car-2.jpg" alt="" /> </SwiperSlide>
-        <SwiperSlide> <img className=" h-96" src="https://i.ibb.co/P1tJTSP/car-3.jpg" alt="" /> </SwiperSlide>
+        <SwiperSlide > <img className="h-96 w-full"  src="https://i.ibb.co/K58sjnn/car-1.jpg" alt="" /> </SwiperSlide>
+        <SwiperSlide> <img className=" h-96 w-full" src="https://i.ibb.co/346jKYv/car-2.jpg" alt="" /> </SwiperSlide>
+        <SwiperSlide> <img className=" h-96 w-full" src="https://i.ibb.co/P1tJTSP/car-3.jpg" alt="" /> </SwiperSlide>
         
       </Swiper>
 
