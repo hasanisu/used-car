@@ -7,26 +7,26 @@ import { FaBars } from "react-icons/fa";
 
 const Dashboard = () => {
   const { user, loading } = useContext(AuthContext)
+  
 
   return (
     <div>
       {
         loading ? <MainLoader /> :
           <>
-            <div className='flex justify-around items-center py-2  bg-red-500'>
-              <h2 className=''>DashBoard</h2>
+            <div className='flex justify-around items-center lg:flex-none lg:justify-center py-2 bg-red-700 sticky top-0'>
+              <h2 className='text-center lg:text-2xl'>DashBoard</h2>
               <div className='flex items-end'>
                 <label htmlFor="my-drawer" className="btn btn-sm bg-red-500 drawer-button lg:hidden"><FaBars /></label>
               </div>
             </div>
 
-
-            <div className='className="md:flex relative min-h-screen"'>
+            <div className='md:flex relative min-h-screen '>
 
               <div className=''>
                 <Sidebar />
               </div>
-              <div className='flex-1 md:ml-64'>
+              <div className='flex-1 md:ml-64 lg:ml-80 mt-10'>
                 <Outlet/>
               </div>
 

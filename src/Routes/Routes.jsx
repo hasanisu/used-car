@@ -8,6 +8,7 @@ import Toyota from "../Pages/CarSection/Toyota/Toyota";
 import Honda from "../Pages/CarSection/Honda";
 import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import BecomeAseller from "../Component/Form/BecomeAseller";
 
 export const router = createBrowserRouter([
     {
@@ -45,7 +46,10 @@ export const router = createBrowserRouter([
         path:'dashboard',
         element:<PrivateRoute><Dashboard/></PrivateRoute>,
         children:[
-
+            {
+                path:'become-a-seller',
+                element:<BecomeAseller/>
+            }
         ]
     }
 ])

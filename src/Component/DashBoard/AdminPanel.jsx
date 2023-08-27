@@ -3,7 +3,8 @@ import React from 'react';
 const AdminPanel = () => {
     return (
         <div>
-            <h2>this is admih</h2>
+            <li><a href="">All Users</a></li>
+            <li><a href="">Manage Users</a></li>
         </div>
     );
 };
