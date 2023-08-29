@@ -20,11 +20,11 @@ const BecomeAseller = () => {
       setRole(data)
     })
   },[user])
+  console.log(user)
   
   const handleToSeller = (data) => {
     
-    const firstName = data.firstName;
-    const lastName = data.lastName;
+    const name= data.name;
     const companyName = data.company;
     const address = data.address;
     const email= data.email;
@@ -32,8 +32,7 @@ const BecomeAseller = () => {
 
     getImageUrl(image).then(data =>{
       const sellerData = {
-        firstName: firstName,
-        lastName:lastName,
+        name: name,
         companyName: companyName,
         documentImage:data,
         address:address,
@@ -75,6 +74,7 @@ const BecomeAseller = () => {
               type="radio"
               name="SellerType"
               value="individual"
+              defaultChecked
               onChange={(e) => setSellerType(e.target.value)}
             />{" "}
             Individual
@@ -95,16 +95,19 @@ const BecomeAseller = () => {
             <>
               {sellerType === "individual" ? (
                 <div className="flex gap-3">
-                  <div className="form-control w-full max-w-xs">
+                  <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">First Name</span>
+                      <span className="label-text">Name</span>
                     </label>
                     <input
-                      type="firstName"
-                      {...register("firstName", {
+                      type="name"
+                      defaultValue={user?.displayName}
+                      readOnly
+                      {...register("name", {
                         required: true,
+                        
                       })}
-                      className="input input-bordered w-full max-w-xs"
+                      className="input input-bordered w-full "
                     />
                     {errors.first && (
                       <div className="alert alert-warning p-2 mt-2">
@@ -121,11 +124,11 @@ const BecomeAseller = () => {
                             d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                           />
                         </svg>
-                        <span className="text-sm">{errors.firstName?.message}</span>
+                        <span className="text-sm">{errors.name?.message}</span>
                       </div>
                     )}
                   </div>
-                  <div className="form-control w-full max-w-xs">
+                  {/* <div className="form-control w-full max-w-xs">
                     <label className="label">
                       <span className="label-text">Last Name</span>
                     </label>
@@ -154,21 +157,22 @@ const BecomeAseller = () => {
                         <span className="text-sm">{errors.lastName?.message}</span>
                       </div>
                     )}
-                  </div>
+                  </div> */}
                 </div>
               ) : (
                 <>
                   <div className="flex gap-3">
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full ">
                       <label className="label">
-                        <span className="label-text">First Name</span>
+                        <span className="label-text">Name</span>
                       </label>
                       <input
-                        type="firstName"
-                        {...register("firstName", {
+                        type="name"
+                        defaultValue={user?.displayName}
+                        {...register("name", {
                           required: true,
                         })}
-                        className="input input-bordered w-full max-w-xs"
+                        className="input input-bordered w-full"
                       />
                       {errors.first && (
                         <div className="alert alert-warning p-2 mt-2">
@@ -186,12 +190,12 @@ const BecomeAseller = () => {
                             />
                           </svg>
                           <span className="text-sm">
-                            {errors.first?.message}
+                            {errors.name?.message}
                           </span>
                         </div>
                       )}
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    {/* <div className="form-control w-full max-w-xs">
                       <label className="label">
                         <span className="label-text">Last Name</span>
                       </label>
@@ -222,7 +226,7 @@ const BecomeAseller = () => {
                           </span>
                         </div>
                       )}
-                    </div>
+                    </div> */}
                   </div>
                   <div className="form-control w-full ">
                     <label className="label">
@@ -269,6 +273,7 @@ const BecomeAseller = () => {
             </label>
             <input
               type="email"
+              defaultValue={user?.email}
               {...register("email", {
                 required: true,
               })}

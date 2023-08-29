@@ -1,10 +1,10 @@
-export const setUserToDb = async (name, email, image) =>{
-    const currentUser = {
-        name,
-        email,
-        image
-    }
-    const url = `http://localhost:5000/user/${email}`;
+export const setUserToDb = async (currentUser) =>{
+    // const currentUser = {
+    //     name,
+    //     email,
+    //     image,
+    // }
+    const url = `http://localhost:5000/user/${currentUser?.email}`;
     const response = await fetch(url, {
         method: 'PUT',
         headers:{

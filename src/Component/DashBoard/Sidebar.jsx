@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getRole } from "../../api/user";
+import { AuthContext } from "../../context/AuthProvider";
 import AdminPanel from "./AdminPanel";
 import HostPanel from "./HostPanel";
+import UserPanel from "./UserPanel";
 
 const Sidebar = () => {
-  const user = {  };
+const {user} = useContext(AuthContext);
+const [role, setRole] = useState(null)
+
+useEffect(()=>{
+  getRole(user?.email)
+  .then(data => {
+    console.log(data)
+    setRole(data)
+  })
+},[user])
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -24,19 +37,11 @@ const Sidebar = () => {
             <hr className="mt-10 mb-5" />
           </div>
           {/* Sidebar content here */}
-          { user.role === "admin" || user.role ===  'host' ? (
-            <>{user?.role === "admin" ? <AdminPanel /> : <HostPanel />}</>
+          { role === "admin" || role ===  'seller' ? (
+            <>{role === "admin" ? <AdminPanel /> : <HostPanel/>}</>
           ) : (
             <>
-              <li>
-                <Link>My Favorite List items</Link>
-              </li>
-              <li>
-                <Link to='become-a-seller'>Become a Seller</Link>
-              </li>
-              <li>
-                <Link>Purchase History</Link>
-              </li>
+              <UserPanel/>
             </>
           )}
         </ul>
