@@ -5,19 +5,22 @@ import { AuthContext } from "../../context/AuthProvider";
 import { getImageUrl } from "../../api/imageUpload";
 import { getRole, sellerRequest } from "../../api/user";
 import { toast } from "react-hot-toast";
+import MainLoader from "../Loader/MainLoader";
 
 const BecomeAseller = () => {
-  const { user, loading } = useContext(AuthContext);
+  const { user} = useContext(AuthContext);
   const [sellerType, setSellerType] = useState("individual");
   const {register,handleSubmit,formState: { errors }} = useForm();
   const [requestError, setRequestError] = useState("");
   const [role, setRole] = useState(null);
+  const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
     getRole(user?.email)
     .then(data => {
       console.log(data)
       setRole(data)
+      setLoading(false)
     })
   },[user])
   console.log(user)
@@ -43,6 +46,7 @@ const BecomeAseller = () => {
       sellerRequest(sellerData).then(data => {
         console.log(data)
         if(data.acknowledged){
+          setLoading(false)
           toast.success('Successfully Send your Request')
         }
       }).catch(error=> console.error(error))
@@ -59,13 +63,18 @@ const BecomeAseller = () => {
   return (
     <div className="h-[800px] flex justify-center items-center shadow-2xl">
       {
-        role ? 
-        (<div>
-          Request sent, Please wait for admin approval
-        </div>)
+         role === 'requested' ? 
+        
+          <>
+           <div>
+            Request sent, Please wait for admin approval
+          </div> </>
+        
 
         :
-        <div className="w-5/12 p-7 shadow-lg">
+       (<>
+       {
+        !loading &&  <div className="w-5/12 p-7 shadow-lg">
         <h2 className="text-xl text-center">Become A Seller Form</h2>
 
         <div className="flex justify-around mb-10 mt-10">
@@ -400,6 +409,8 @@ const BecomeAseller = () => {
           {requestError && <p className="text-red-600">{requestError}</p>}
         </form>
       </div>
+       }
+       </>)
       }
     </div>
   );

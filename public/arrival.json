@@ -1,95 +1,22 @@
 [
     {
-        "arrival":"new",
-        "sale":0,
-        "categoryId":"1",
-        "maker":"Toyota",
-        "model":"Toyota Aqua",
-        "price":"2,988",
-        "kilometer":"59,446",
-        "transmission":"automatic",
-        "color":"blue",
-        "img":"https://i.ibb.co/XYZMX66/aqua.jpg"
+        "categoryName":"Microbus",
+        "category_id":"01"
+
     },
     {
-        "arrival":"new",
-        "sale":0,
-        "categoryId":"1",
-        "maker":"Toyota",
-        "model":"Toyota Raize",
-        "price":"5,988",
-        "kilometer":"59,446",
-        "transmission":"automatic",
-        "color":"blue",
-        "img":"https://i.ibb.co/SsyBrbX/raize.jpg"
+        "categoryName":"Luxury Car",
+        "category_id":"02"
+
     },
     {
-        "arrival":"new",
-        "sale":0,
-        "categoryId":"1",
-        "maker":"Toyota",
-        "model":"Toyota Vitz",
-        "price":"2,988",
-        "kilometer":"59,446",
-        "transmission":"automatic",
-        "color":"blue",
-        "img":"https://i.ibb.co/G3zrXPt/vitz.jpg"
+        "categoryName":"Electric Car",
+        "category_id":"03"
+
     },
     {
-        "arrival":"new",
-        "sale":0,
-        "categoryId":"1",
-        "maker":"Toyota",
-        "model":"Toyota Auris",
-        "price":"2,988",
-        "kilometer":"59,446",
-        "transmission":"automatic",
-        "color":"blue",
-        "img":"https://i.ibb.co/pvNxBdc/auris.jpg"
-    },
-    {
-        "arrival":"new",
-        "sale":0,
-        "categoryId":"1",
-        "maker":"Toyota",
-        "model":"Toyota Aqua",
-        "price":"2,988",
-        "kilometer":"59,446",
-        "transmission":"automatic",
-        "color":"blue",
-        "img":"https://i.ibb.co/XYZMX66/aqua.jpg"
-    },
-    {
-        
-        "categoryId":"2",
-        "maker":"Nissan",
-        "model":"Nissan Note",
-        "price":"2,988",
-        "kilometer":"59,446",
-        "transmission":"automatic",
-        "color":"blue",
-        "img":"https://i.ibb.co/0VvkQFm/note.jpg"
-    },
-    {
-        
-        "categoryId":"3",
-        "maker":"Suzuki",
-        "model":"Suzuki Swift",
-        "price":"2,988",
-        "kilometer":"59,446",
-        "transmission":"automatic",
-        "color":"blue",
-        "img":"https://i.ibb.co/kDfBG8Y/swift.jpg"
-    },
-    {
-        
-        "categoryId":"3",
-        "maker":"Suzuki",
-        "model":"Suzuki Swift",
-        "price":"2,988",
-        "kilometer":"59,446",
-        "transmission":"automatic",
-        "color":"blue",
-        "img":"https://i.ibb.co/kDfBG8Y/swift.jpg"
+        "categoryName":"Dump Car",
+        "category_id":"04"
+
     }
 ]

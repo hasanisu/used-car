@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaPercent, FaSearch, FaRegHeart } from "react-icons/fa";
+import {Link} from 'react-router-dom';
 
 const AccountOpeningDiscount = () => {
     return (
@@ -19,7 +20,7 @@ const AccountOpeningDiscount = () => {
                     <p className='text-xl'>Save your favorite wish list</p>
                 </div>
                 <div className="card-actions">
-                    <button className="btn btn-primary w-full">Buy Now</button>
+                    <Link to='/login' className='w-full'><button className="btn btn-primary w-full">Create Account</button></Link>
                 </div>
             </div>
         </div>

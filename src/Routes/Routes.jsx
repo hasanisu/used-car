@@ -10,6 +10,7 @@ import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import BecomeAseller from "../Component/Form/BecomeAseller";
 import Welcome from "../Component/Welcome";
+import ReconCarsCategory from "../Pages/CarSection/BodyTypeCar/ReconCarsCategory";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,11 @@ export const router = createBrowserRouter([
             {
                 path:'/car-maker/honda',
                 element:<Honda/>
+            },
+            {
+                path:'/category/:id',
+                element: <ReconCarsCategory/>,
+                loader: ({params})=> fetch(`http://localhost:5000/category/${params.id}`)
             }
         ]
     },

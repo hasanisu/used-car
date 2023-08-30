@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router-dom";
 
 const CarDetails = () => {
   const allCars = useLoaderData();
-  console.log(allCars);
   const { img, maker, model, transmission, price, sale, color, arrival_year } =
     allCars;
 
@@ -12,22 +11,23 @@ const CarDetails = () => {
       <div className="md:flex justify-between">
         <h2 className=" uppercase">CAR MAKER: <span className="font-semibold text-primary">{maker}</span></h2>
         <div>
-          <p>Price: <span className="text-primary">${price}</span></p>
+          <button className="btn btn-xs btn-primary">BuyNow</button>
+          <p className="text-2xl">Price: <span className="text-primary text-xl">${price}</span></p>
           <p>Save: <span className="text-primary">{sale}%</span> as of current published</p>
         </div>
       </div>
-      <img src={img} alt={maker} />
-      <p className="text-primary">Model: <span className="text-white">{model}</span></p>
+      <img src={img} alt='' />
+      <p className="text-primary text-2xl">Model: <span className="text-white text-xl">{model}</span></p>
       <div>
-        <h2 className="mt-5">Features</h2>
+        <h2 className="mt-5 text-2xl">Features</h2>
         <hr />
-        <p >Transmission: {transmission}</p>
+        <p className="text-2xl">Transmission: {transmission}</p>
 
-        <p>color: {color}</p>
+        <p className="text-2xl">color: {color}</p>
       </div>
-      <p className="mt-5">Description</p>
+      <p className="mt-5 text-2xl">Description</p>
       <hr />
-      <span >
+      <span className="text-xl">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae autem
         quibusdam delectus, minima enim fugit magni quisquam illum asperiores
         labore amet explicabo dolores ipsam quo eius numquam nostrum. Natus

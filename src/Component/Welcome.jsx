@@ -17,21 +17,19 @@ const Welcome = () => {
     return (
         <div className='h-screen flex flex-col justify-center items-center pb-16'>
             <div className='flex justify-center items-center'>
-                <span className='text-5xl font-bold'>Welc</span>
-                <span className='w-12 h-12 border-8 border-dashed rounded-full mt-4 animate-spin border-purple-700'></span>
-                <span className='text-5xl font-bold mr-2'>me</span>
-                <span className='text-5xl font-bold'>To</span>
+                <span className='text-5xl font-bold'>Welcome To</span>
+                
 
             </div>
             <div className='flex justify-center items-center'>
-                {!loading && role ? (
+                {!loading && role === 'admin' || role === 'seller' ? (
                     <>
                     {
                         role === 'admin' ? (
                             <p className='text-2xl mt-4 text-gray-400'>Admin Dashboard</p>
                         )
                         :
-                            (<p className='text-2xl mt-4 text-gray-400'>Seller/Host Dashboard</p>)
+                            (<p className='text-2xl mt-4 text-gray-400'>Host Dashboard</p>)
                     }
                     </>
                 )
