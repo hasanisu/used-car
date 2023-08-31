@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import DetailsCard from '../../../Component/Card/DetailsCard';
+import MainLoader from '../../../Component/Loader/MainLoader';
 
 
 const NewArrivals = () => {
+    const [loading, setLoadin] = useState(true)
     const [newArrival, setNewArrival ] = useState([])
     useEffect(()=>{
         fetch('http://localhost:5000/new-arrivals')
         .then(res => res.json())
-        .then(data => setNewArrival(data))
+        .then(data => {
+            setLoadin(false)
+            setNewArrival(data)
+            
+        })
     },[])
     return (
-        <div className='mt-10'>
+        <div>
+            {
+                loading ? <MainLoader/> :
+
+                <div className='mt-10'>
             <div className='flex justify-between'>
                 <div className='flex'>
                     <p className='text-white bg-red-600 font-sm rounded-md px-2 py-1 flex justify-center items-center mr-2'>NEW</p>
@@ -32,6 +42,8 @@ const NewArrivals = () => {
             </div>
 
 
+        </div>
+            }
         </div>
     );
 };

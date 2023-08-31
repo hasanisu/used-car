@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import BecomeAseller from "../Component/Form/BecomeAseller";
 import Welcome from "../Component/Welcome";
 import ReconCarsCategory from "../Pages/CarSection/BodyTypeCar/ReconCarsCategory";
+import AddProduct from "../Pages/DashboardContent/AddProduct";
 
 export const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
             {
                 path:'become-a-seller',
                 element:<BecomeAseller/>
+            },
+            {
+                path:'add-product',
+                element: <AddProduct/>
             }
         ]
     }

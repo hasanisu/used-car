@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import DetailsCard from '../../../Component/Card/DetailsCard';
+import MainLoader from '../../../Component/Loader/MainLoader';
 
 
 const SaleOnCar = () => {
+    const [loading, setLoadin] = useState(true)
     const [saleOffer, setSaleOffer ] = useState([])
     useEffect(()=>{
         fetch('http://localhost:5000/car-sale')
         .then(res => res.json())
-        .then(data => setSaleOffer(data))
+        .then(data => {
+            setLoadin(false)
+            setSaleOffer(data)
+        })
     },[])
     return (
-        <div className='mt-10'>
+        <div>
+            {
+                loading? <MainLoader/> :
+                <div className='mt-10'>
             <div className='flex justify-between'>
                 <div className='flex'>
                     <h5 className='text-white bg-lime-600 font-sm rounded-md px-2 py-1 flex justify-center items-center mr-2'>SALE</h5>
@@ -32,6 +40,8 @@ const SaleOnCar = () => {
             </div>
 
 
+        </div>
+            }
         </div>
     );
 };

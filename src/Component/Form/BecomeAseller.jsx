@@ -137,36 +137,6 @@ const BecomeAseller = () => {
                       </div>
                     )}
                   </div>
-                  {/* <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                      <span className="label-text">Last Name</span>
-                    </label>
-                    <input
-                      type="lastName"
-                      {...register("lastName", {
-                        required: true,
-                      })}
-                      className="input input-bordered w-full max-w-xs"
-                    />
-                    {errors.last && (
-                      <div className="alert alert-warning p-2 mt-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="stroke-current shrink-0 h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                          />
-                        </svg>
-                        <span className="text-sm">{errors.lastName?.message}</span>
-                      </div>
-                    )}
-                  </div> */}
                 </div>
               ) : (
                 <>
@@ -204,38 +174,6 @@ const BecomeAseller = () => {
                         </div>
                       )}
                     </div>
-                    {/* <div className="form-control w-full max-w-xs">
-                      <label className="label">
-                        <span className="label-text">Last Name</span>
-                      </label>
-                      <input
-                        type="lastName"
-                        {...register("lastName", {
-                          required: true,
-                        })}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                      {errors.last && (
-                        <div className="alert alert-warning p-2 mt-2">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="stroke-current shrink-0 h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                            />
-                          </svg>
-                          <span className="text-sm">
-                            {errors.last?.message}
-                          </span>
-                        </div>
-                      )}
-                    </div> */}
                   </div>
                   <div className="form-control w-full ">
                     <label className="label">
