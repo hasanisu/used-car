@@ -1,3 +1,6 @@
+import { async } from "@firebase/util";
+import app from "../firebase/firebase.config";
+
 export const setUserToDb = async (currentUser) =>{
     // const currentUser = {
     //     name,
@@ -55,6 +58,14 @@ export const makeSeller = async user =>{
         },
         body:JSON.stringify({...user, role: 'seller'})
     })
+    const data = await res.json()
+    return data;
+}
+
+//Email
+export const getSellerProducts = async(email)=>{
+    const url =`http://localhost:5000/post-cars?email=${email}`;
+    const res = await fetch(url)
     const data = await res.json()
     return data;
 }

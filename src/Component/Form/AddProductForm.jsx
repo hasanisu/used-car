@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DatePicker from "react-datepicker";
 import { reconCarCategories } from '../../api/cars';
+import Spinner from '../Loader/Spinner';
 
 const AddProductForm = ({
     value,
@@ -17,8 +18,10 @@ const AddProductForm = ({
     getProductionId,
     getTransmissionType,
     handleToAddProduct,
+    loading
 
 }) => {
+    
   
     return (
         <div>
@@ -48,7 +51,7 @@ const AddProductForm = ({
                                     <span className="label-text">Brand Id</span>
                                 </label>
 
-                                <input type="text" name="" id="" defaultValue={brandId} className="input input-bordered" />
+                                <input type="text" name="" id="" defaultValue={brandId} readOnly className="input input-bordered" />
                             </div>
                         </div>
 
@@ -58,13 +61,13 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Maker Name</span>
                                 </label>
-                                <input name='maker' type="text" placeholder="email" className="input input-bordered" />
+                                <input name='maker' type="text" placeholder="email" className="input input-bordered text-md uppercase" />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Model Name</span>
                                 </label>
-                                <input name='model' type="text" placeholder="password" className="input input-bordered" />
+                                <input name='model' type="text" placeholder="password" className="input input-bordered text-md uppercase" />
                             </div>
                         </div>
 
@@ -81,7 +84,7 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Production Year</span>
                                 </label>
-                                <select onChange={getProductionId} className="select select-bordered">
+                                <select onChange={getProductionId} className="select select-bordered text-md uppercase">
                                     <option disabled selected>Allow last 10 years</option>
                                     <option>2023</option>
                                     <option>2022</option>
@@ -106,7 +109,7 @@ const AddProductForm = ({
                                 <DatePicker 
                                 showDisabledMonthNavigation
                                 dateFormat="yyyy/MM/dd"
-                                className='w-full text-center py-3 bg-gray-700 rounded-md' 
+                                className='w-full text-center py-3 bg-gray-700 rounded-md text-md' 
                                 selected={startDate} 
                                 onChange={(date) => setStartDate(date)} 
                                 minDate={new Date()}
@@ -124,13 +127,13 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Buying Price</span>
                                 </label>
-                                <input name='buying' type="text" placeholder="password" className="input input-bordered" />
+                                <input name='buying' type="text" placeholder="buying price" className="input input-bordered text-md" />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Selling Price</span>
                                 </label>
-                                <input name='selling' type="text" placeholder="password" className="input input-bordered" />
+                                <input name='selling' type="text" placeholder="delling price" className="input input-bordered text-md" />
                             </div>
                         </div>
 
@@ -159,7 +162,7 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Color</span>
                                 </label>
-                                <input name='color' type="text" placeholder="password" className="input input-bordered" />
+                                <input name='color' type="text" placeholder="password" className="input input-bordered text-md uppercase" />
                             </div>
                         </div>
 
@@ -168,20 +171,22 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Problems</span>
                                 </label>
-                                <textarea name='problems' className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+                                <textarea name='problems' className="textarea textarea-bordered h-24 text-md uppercase" placeholder="Bio"></textarea>
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Features</span>
                                 </label>
-                                <textarea name='features' className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+                                <textarea name='features' className="textarea textarea-bordered h-24 text-md uppercase" placeholder="Bio"></textarea>
                             </div>
                         </div>
 
 
 
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary">
+                                {loading ? <Spinner/> : 'Add Product'}
+                            </button>
                         </div>
                     </div>
                 </form>

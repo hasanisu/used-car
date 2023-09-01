@@ -12,6 +12,7 @@ import BecomeAseller from "../Component/Form/BecomeAseller";
 import Welcome from "../Component/Welcome";
 import ReconCarsCategory from "../Pages/CarSection/BodyTypeCar/ReconCarsCategory";
 import AddProduct from "../Pages/DashboardContent/AddProduct";
+import AllProducts from "../Pages/DashboardContent/AllProducts";
 
 export const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
             {
                 path:'add-product',
                 element: <AddProduct/>
+            },
+            {
+                path:'all-product',
+                element: <AllProducts/>
             }
         ]
     }
