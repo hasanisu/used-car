@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import DetailsCard from '../../../Component/Card/DetailsCard';
 import MainLoader from '../../../Component/Loader/MainLoader';
+import HomeCart from '../../../Component/Card/HomeCart';
 
 
 const SaleOnCar = () => {
-    const [loading, setLoadin] = useState(true)
+    const [loading, setLoading] = useState(true)
     const [saleOffer, setSaleOffer ] = useState([])
     useEffect(()=>{
         fetch('http://localhost:5000/car-sale')
         .then(res => res.json())
         .then(data => {
-            setLoadin(false)
+            setLoading(false)
             setSaleOffer(data)
         })
     },[])
@@ -29,13 +29,13 @@ const SaleOnCar = () => {
 
             <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10 '>
                 {
-                    saleOffer.map(arrival => <DetailsCard
-                    key={arrival._id}
-                    arrival={arrival}
+                    saleOffer.map(promotion => <HomeCart
+                    key={promotion._id}
+                    promotion={promotion}
 
                     >
 
-                    </DetailsCard>)
+                    </HomeCart>)
                 }
             </div>
 

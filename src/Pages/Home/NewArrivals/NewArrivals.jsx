@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import DetailsCard from '../../../Component/Card/DetailsCard';
 import MainLoader from '../../../Component/Loader/MainLoader';
+import HomeCart from '../../../Component/Card/HomeCart';
 
 
 const NewArrivals = () => {
-    const [loading, setLoadin] = useState(true)
+    const [loading, setLoading] = useState(true)
     const [newArrival, setNewArrival ] = useState([])
     useEffect(()=>{
         fetch('http://localhost:5000/new-arrivals')
         .then(res => res.json())
         .then(data => {
-            setLoadin(false)
+            setLoading(false)
             setNewArrival(data)
+            console.log(data)
             
         })
     },[])
@@ -31,13 +32,13 @@ const NewArrivals = () => {
 
             <div className='grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-10 '>
                 {
-                    newArrival.map(arrival => <DetailsCard
-                    key={arrival._id}
-                    arrival={arrival}
+                    newArrival.map(promotion => <HomeCart
+                    key={promotion._id}
+                    promotion={promotion}
 
                     >
 
-                    </DetailsCard>)
+                    </HomeCart>)
                 }
             </div>
 

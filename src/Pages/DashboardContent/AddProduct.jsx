@@ -6,14 +6,17 @@ import { addToProductDb, reconCarCategories } from '../../api/cars';
 import { getImageUrl } from '../../api/imageUpload';
 import AddProductForm from '../../Component/Form/AddProductForm';
 import { AuthContext } from '../../context/AuthProvider';
+import { getSellerStatus } from '../../api/user';
 
 const AddProduct = () => {
     const {user} = useContext(AuthContext)
+    console.log('hi', user)
     const [value, setValue] = useState(null)
     const [startDate, setStartDate] = useState(new Date());
     // const [carCetegory, setCartegory] = useState(null)
+    const [userStatus, setUserStatus] = useState(null)
     const [brandId, setBrandId] = useState(null)
-    const [porductionYear, setProductionYear] = useState(null)
+    const [productionYear, setProductionYear] = useState(null)
     const [transmission, setTransmission] = useState(null)
     const [location, setLocation] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -24,6 +27,14 @@ const AddProduct = () => {
             setValue(data)
         })
     },[])
+
+    useEffect(()=>{
+        getSellerStatus(user?.email)
+        .then(data => {
+            setUserStatus(data)
+
+        })
+    },[user])
 
     //for getting category brand id
     // const getCategoryName = (event) => {
@@ -81,7 +92,7 @@ const AddProduct = () => {
                makerName: maker,
                modelName: model,
                carImage: data,
-               productionYear: parseFloat(porductionYear),
+               productionYear: parseFloat(productionYear),
                postDate: startDate,
                buyingPrice: buying,
                sellingPrice: selling,
@@ -91,13 +102,14 @@ const AddProduct = () => {
                sale: parseFloat(sale),
                carProblem: problems,
                features: features,
-               locaion: location,
+               location: location,
                phone: phone,
                
                seller:{
                     name: user?.displayName,
                     image: user?.photoURL,
                     email: user?.email,
+                    status: userStatus,
                }
             }
             addToProductDb(carData)
@@ -136,7 +148,7 @@ const AddProduct = () => {
             setStartDate={setStartDate}
             brandId={brandId}
             setBrandId={setBrandId}
-            porductionYear={porductionYear}
+            productionYear={productionYear}
             setProductionYear={setProductionYear}
             transmission={transmission}
             setTransmission={setTransmission}

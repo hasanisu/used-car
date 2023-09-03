@@ -12,7 +12,6 @@ const Sidebar = () => {
   useEffect(() => {
     getRole(user?.email)
       .then(data => {
-        console.log(data)
         setRole(data)
       })
   }, [user])

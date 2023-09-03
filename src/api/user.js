@@ -48,6 +48,16 @@ export const getRole = async email =>{
 
 }
 
+// Get role 
+export const getSellerStatus = async email =>{
+    const url = `http://localhost:5000/user/${email}`;
+    const res = await fetch(url);
+    const user = await res.json();
+    return user?.status
+
+
+}
+
 
 export const makeSeller = async user =>{
     delete user._id 
