@@ -15,7 +15,7 @@ const Honda = () => {
     return (
         <div>
             <h2>All Honda {allHondaCars.length}</h2>
-            <div className='grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
+            <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     allHondaCars.map(allHonda => <DetailsCard
                     key={allHonda._id}

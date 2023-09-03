@@ -5,9 +5,9 @@ const HostPanel = () => {
     return (
         <div>
             <li><Link to="add-product">Add Product</Link></li>
-            <li><Link to='all-product'>All Sold Products</Link></li>
+            <li><Link >All Sold Products</Link></li>
             <li><Link>Remaining Products</Link></li>
-            <li><Link>All Products</Link></li>
+            <li><Link to='my-product'>My Products</Link></li>
         </div>
         
         

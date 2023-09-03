@@ -16,7 +16,7 @@ const Toyota = () => {
     return (
         <div>
             <h2>this is toyota {}</h2>
-            <div className='grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
+            <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     modelType.map(type => <DetailsCard
                     key={type._id}

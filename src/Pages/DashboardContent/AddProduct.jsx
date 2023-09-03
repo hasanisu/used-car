@@ -15,6 +15,7 @@ const AddProduct = () => {
     const [brandId, setBrandId] = useState(null)
     const [porductionYear, setProductionYear] = useState(null)
     const [transmission, setTransmission] = useState(null)
+    const [location, setLocation] = useState(null)
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
@@ -30,22 +31,25 @@ const AddProduct = () => {
     //     setCartegory(event.target.value)
     // }
 
+
     //for getting category brand id
     const getBrandId = (event) => {
-        console.log(event.target.value)
         setBrandId(event.target.value)
     }
 
     //for getting year of production
     const getProductionId = (event)=>{
-        console.log(event.target.value)
         setProductionYear(event.target.value)
     }
 
     //for getting Transmission
     const getTransmissionType = (event)=>{
-        console.log(event.target.value)
         setTransmission(event.target.value)
+    }
+
+    //for getting Location
+    const getLocationInfo = (event)=>{
+        setLocation(event.target.value)
     }
 
 
@@ -65,6 +69,10 @@ const AddProduct = () => {
         const color = form.color.value;
         const problems = form.problems.value;
         const features = form.features.value;
+        const phone = form.phone.value;
+        const sale = form.sale.value;
+        console.log(kilometer)
+
         setLoading(true)
         getImageUrl(image)
         .then(data =>{
@@ -77,11 +85,15 @@ const AddProduct = () => {
                postDate: startDate,
                buyingPrice: buying,
                sellingPrice: selling,
-               kilometer: parseFloat(kilometer),
+               kilometer: parseInt(kilometer),
                transmission: transmission,
                color: color,
+               sale: parseFloat(sale),
                carProblem: problems,
                features: features,
+               locaion: location,
+               phone: phone,
+               
                seller:{
                     name: user?.displayName,
                     image: user?.photoURL,
@@ -93,7 +105,7 @@ const AddProduct = () => {
                 console.log(data)
                 setLoading(false)
                 toast.success('Your post successfully added')
-                navigate()
+                navigate('/dashboard/my-product')
             }).catch(err => {
                 console.log(err)
                 setLoading(false)
@@ -133,6 +145,7 @@ const AddProduct = () => {
             getTransmissionType={getTransmissionType}
             handleToAddProduct={handleToAddProduct}
             loading={loading}
+            getLocationInfo={getLocationInfo}
             
 
             

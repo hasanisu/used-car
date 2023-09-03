@@ -5,7 +5,7 @@ import TableRow from '../../Component/Card/TableRow';
 import MainLoader from '../../Component/Loader/MainLoader';
 import AuthProvider, { AuthContext } from '../../context/AuthProvider';
 
-const AllProducts = () => {
+const MyProducts = () => {
     const {user} = useContext(AuthContext)
     
     const [products, setProducts] = useState([])
@@ -58,4 +58,4 @@ const AllProducts = () => {
     );
 };
 
-export default AllProducts;
+export default MyProducts;

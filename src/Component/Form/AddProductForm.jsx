@@ -18,7 +18,8 @@ const AddProductForm = ({
     getProductionId,
     getTransmissionType,
     handleToAddProduct,
-    loading
+    loading,
+    getLocationInfo,
 
 }) => {
     
@@ -133,7 +134,7 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Selling Price</span>
                                 </label>
-                                <input name='selling' type="text" placeholder="delling price" className="input input-bordered text-md" />
+                                <input name='selling' type="text" placeholder="selling price" className="input input-bordered text-md" />
                             </div>
                         </div>
 
@@ -142,12 +143,12 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Kilometer</span>
                                 </label>
-                                <input name='kilometer' type="text" placeholder="kilometer" className="input input-bordered" />
+                                <input name='kilometer' type="number" placeholder="kilometer" className="input input-bordered" />
                             </div>
 
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text">Transmission</span>
+                                    <span className="label-text ">Transmission</span>
                                 </label>
                                 <select onChange={getTransmissionType} className="select select-bordered">
                                     <option disabled selected>Select</option>
@@ -162,7 +163,13 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Color</span>
                                 </label>
-                                <input name='color' type="text" placeholder="password" className="input input-bordered text-md uppercase" />
+                                <input name='color' type="text" placeholder="color" className="input input-bordered text-md uppercase" />
+                            </div>
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Sale</span>
+                                </label>
+                                <input name='sale' type="text" placeholder="sale" className="input input-bordered text-md uppercase" />
                             </div>
                         </div>
 
@@ -171,15 +178,51 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Problems</span>
                                 </label>
-                                <textarea name='problems' className="textarea textarea-bordered h-24 text-md uppercase" placeholder="Bio"></textarea>
+                                <textarea name='problems' className="textarea textarea-bordered h-24 text-md uppercase" placeholder="problems"></textarea>
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Features</span>
                                 </label>
-                                <textarea name='features' className="textarea textarea-bordered h-24 text-md uppercase" placeholder="Bio"></textarea>
+                                <textarea name='features' className="textarea textarea-bordered h-24 text-md uppercase" placeholder="features"></textarea>
                             </div>
                         </div>
+
+                        <h2 className='mt-5 text-2xl'>Contact Info</h2>
+                        <div className='flex justify-between gap-4'>
+                       <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Location</span>
+                                </label>
+                                <select onChange={getLocationInfo} className="select select-bordered text-md uppercase">
+                                    <option disabled selected>Please Select</option>
+                                    <option>Tokyo</option>
+                                    <option>Chiba</option>
+                                    <option>Saitama</option>
+                                    <option>Kanagawa</option>
+                                    <option>Nagoya</option>
+                                    <option>Osaka</option>
+                                    <option>Ibaraki</option>
+                                    <option>Sendai</option>
+                                    <option>Hokkaido</option>
+                                    <option>Fukuoka</option>
+                                    <option>Shimane</option>
+                                    <option>Gunma</option>
+                                    <option>Nagano</option>
+                                    <option>Gifu</option>
+                                    <option>Hiroshima</option>
+
+                                </select>
+                            </div>
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Phone Number</span>
+                                </label>
+                                <input name='phone' type="text" placeholder="phone" className="input input-bordered text-md uppercase" />
+                            </div>
+
+                       </div>
+
 
 
 
