@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider, updateProfile} from 'firebase/auth';
 import app from '../firebase/firebase.config';
+import { allWishlistByEmail } from '../api/user';
 const provider = new GoogleAuthProvider();
 
 
@@ -8,8 +9,10 @@ export const AuthContext = createContext();
 const auth = getAuth(app)
 
 const AuthProvider = ({children}) => {
-    const [user, setUser] = useState({name: 'hasan'})
+    const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+
+
 
     const createUser =(email, password)=> {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -39,6 +42,18 @@ const AuthProvider = ({children}) => {
     }
 
 
+  //wishlist api call
+//   useEffect(()=>{
+//         allWishlistByEmail(user?.email)
+//         .then(data =>{
+//         console.log(data)
+//         setWishlist(data)
+//         }).catch(err => console.log(err))
+    
+//     },[user])
+
+
+
     useEffect(()=>{
         const unsubscribe= onAuthStateChanged(auth, (currentUser=>{
             console.log('user Observing')
@@ -50,6 +65,10 @@ const AuthProvider = ({children}) => {
 
 
 
+  
+
+
+
     const authInfo = {user, 
         createUser,
         loginUser, 
@@ -58,6 +77,7 @@ const AuthProvider = ({children}) => {
         signInWithGoogle,
         loading,
         logOut,
+    
     }
 
     return (

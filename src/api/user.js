@@ -82,11 +82,20 @@ export const getSellerProducts = async (email) => {
 
 
 
+
+//Get all wishlist
+export const allWishlistByEmail = async(email) =>{
+    const url = `http://localhost:5000/carts?email=${email}`;
+    const res = await fetch(url)
+    const data = await res.json()
+    return data;
+}
+
 // set wishlist to cart
 export const addToWishlist = async (addToCart) => {
-    const url = `http://localhost:5000/carts/${addToCart?._id}`
+    const url = `http://localhost:5000/carts`
     const res = await fetch(url, {
-        method: 'PUT',
+        method: 'POST',
         headers: {
             'content-type': 'application/json'
         },
@@ -97,8 +106,8 @@ export const addToWishlist = async (addToCart) => {
 }
 
 //delete wishlist
-export const deleteToWishlist = async(_id)=>{
-    const url = `http://localhost:5000/carts/${_id}`
+export const deleteToWishlist = async(id)=>{
+    const url = `http://localhost:5000/carts/${id}`
     const res = await fetch(url, {
         method: 'DELETE',
     })

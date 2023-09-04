@@ -8,7 +8,6 @@ const BodyCategory = ({type}) => {
     useEffect(()=>{
         getUsedCar(type.category_id)
         .then(data =>{
-            console.log(data)
         })
     },[type])
     return (
