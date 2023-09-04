@@ -14,6 +14,7 @@ import ReconCarsCategory from "../Pages/CarSection/BodyTypeCar/ReconCarsCategory
 import AddProduct from "../Pages/DashboardContent/AddProduct";
 
 import MyProducts from "../Pages/DashboardContent/MyProducts";
+import MyWishlist from "../Pages/DashboardContent/MyWishlist";
 
 export const router = createBrowserRouter([
     {
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
             {
                 path:'my-product',
                 element: <MyProducts/>
+            },
+            {
+                path:'my-wishlist',
+                element: <MyWishlist/>
             }
         ]
     }
