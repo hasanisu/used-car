@@ -5,22 +5,24 @@ import { ConstructionOutlined } from "@mui/icons-material";
 import { addToWishlist, deleteToWishlist } from "../../api/user";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-hot-toast";
+import useCart from "../../hooks/useCart";
 
 const DetailsCard = ({ arrival }) => {
   const { modelName, makerName, sellingPrice, carImage, kilometer, _id, sale, seller } = arrival;
 
   const {user} = useContext(AuthContext)
-
+  const [, ,refetch] = useCart()
   
 
   const handleToCart= () => {
 
-    const addToCart = {
+    if(user){
+      const addToCart = {
         modelName, 
         makerName, 
         sellingPrice, 
         carImage, 
-        _id,
+        carId:_id,
         wishlist:'yes',
         name: user?.displayName,
         email: user?.email
@@ -29,18 +31,16 @@ const DetailsCard = ({ arrival }) => {
 
         addToWishlist(addToCart).then(data =>{
           console.log(data)
-          if(data.acknowledged ){
+          if(data.insertedId ){
+            refetch();
             toast.success('added to your cart list')
           }
           
         }).catch(err => console.log(err))
-    
-
-      // else{
-      //   deleteToWishlist(_id).then(data => {
-      //     console.log(data)
-      //   }).catch(err => console.log(err))
-      // }
+    }
+    else{
+      toast.error('please login to add product')
+    }
     
   }
 
@@ -95,7 +95,7 @@ const DetailsCard = ({ arrival }) => {
             <button className="btn btn-xs btn-primary">Buy Now</button>
           </Link>
         </div>
-        <button onClick={handleToCart} disabled={!user?.email} className=" bg-orange-400 mt-2">add to cart</button>
+        <button onClick={handleToCart} className=" bg-orange-400 mt-2">add to cart</button>
       </div>
     </div>
   );

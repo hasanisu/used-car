@@ -8,8 +8,8 @@ const Main = () => {
         <div className='max-w-screen-xl mx-auto'>
             <div> <Navbar></Navbar></div>
 
-            <div className="md:flex">
-                <div className='flex-auto w-96'>
+            <div className="md:flex ">
+                <div className='flex-auto w-96 mt-20'>
                     <Outlet></Outlet>
                 </div >
                 <div className='w-80 pl-6'>
