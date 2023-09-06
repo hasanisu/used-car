@@ -139,8 +139,8 @@ const AddProduct = () => {
 
 
     return (
-        <div className="mb-10 mt-10">
-            <h2 className='text-center'>This is Add product</h2>
+        <div className="mb-10 mt-20">
+            <h2 className='text-center text-2xl'>Add your product</h2>
             <AddProductForm
             value={value}
             setValue={setValue}

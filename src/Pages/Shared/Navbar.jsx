@@ -16,7 +16,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="navbar bg-base-100 fixed z-20 bg-opacity-50">
+    <div className="navbar bg-base-100 fixed z-20 bg-opacity-80 max-w-screen-xl">
       <div className="flex-1">
         <Link to="/" className="normal-case text-primary text-2xl">
           UsedCar

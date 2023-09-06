@@ -20,7 +20,7 @@ const Sidebar = () => {
     <div className="drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 
-      <div className="drawer-side ">
+      <div className="drawer-side">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
 
         <ul className="menu p-4 w-72 h-full bg-yellow-700 text-base-content fixed">
@@ -28,11 +28,11 @@ const Sidebar = () => {
             <img
               src={user?.photoURL}
               alt="userPhoto"
-              className="avatar w-24 rounded-xl"
+              className="avatar w-24 rounded-xl mt-20"
             />
             <h2 className="text-xl">{user?.displayName}</h2>
             <p>Role: {role}</p>
-            <hr className="mt-10 mb-5" />
+            <hr className="mt-16 mb-5" />
           </div>
           {/* Sidebar content here */}
           {role === "admin" || role === 'seller' ? (
@@ -44,7 +44,7 @@ const Sidebar = () => {
           )}
           <div className="mt-96">
             <Link to='/'>
-            <button className="mt-32 bg-blue-500 hover:bg-blue-300 hover:text-gray-900 w-full py-2 text-lg rounded-3xl">Bank to Home</button>
+            <button className=" bg-blue-500 hover:bg-blue-300 hover:text-gray-900 w-full py-2 text-lg rounded-3xl">Bank to Home</button>
             </Link>
           </div>
         </ul>
