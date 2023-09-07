@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const AdminPanel = () => {
     return (
         <div>
-            <li><a href="">All Users</a></li>
+            <li><Link to="all-users">All Users</Link></li>
             <li><a href="">Manage Users</a></li>
         </div>
     );

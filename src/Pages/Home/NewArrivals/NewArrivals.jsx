@@ -12,7 +12,6 @@ const NewArrivals = () => {
         .then(data => {
             setLoading(false)
             setNewArrival(data)
-            console.log(data)
             
         })
     },[])

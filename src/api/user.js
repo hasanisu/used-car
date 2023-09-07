@@ -1,23 +1,26 @@
 import { async } from "@firebase/util";
-import app from "../firebase/firebase.config";
 
-export const setUserToDb = async (currentUser) => {
-    // const currentUser = {
-    //     name,
-    //     email,
-    //     image,
-    // }
+
+export const setUserToDb = (currentUser) => {
     const url = `http://localhost:5000/user/${currentUser?.email}`;
-    const response = await fetch(url, {
+     fetch(url, {
         method: 'PUT',
         headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
         },
         body: JSON.stringify(currentUser)
     })
-    const data = await response.json();
-    return data
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+
+         //save token  to in local storage 
+         localStorage.setItem('usedcar-token', data.token)
+    })
 }
+
+
+
 
 
 export const sellerRequest = async sellerData => {
@@ -112,5 +115,18 @@ export const deleteToWishlist = async(id)=>{
         method: 'DELETE',
     })
     const data = await res.json()
+    return data
+}
+
+
+//Get all user For Admin
+export const getAllUser = async () =>{
+    const url = `http://localhost:5000/users`;
+    const res = await fetch(url,{
+        headers: {
+            authorization: `bearer ${localStorage.getItem('usedcar-token')}`
+        }
+    })
+    const data = await res.json();
     return data
 }

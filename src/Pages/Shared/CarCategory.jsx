@@ -45,7 +45,6 @@ const CarCategory = () => {
 		getAllToyota()
 		.then(data => {
 			setAllToyota(data)
-			console.log(data)
 		})
 		.catch(err => console.log(err))
 	},[])
@@ -53,9 +52,6 @@ const CarCategory = () => {
 		getAllHonda()
 		.then(data => {
 			setAllHonda(data)
-			console.log(data)
-			
-			
 		})
 		.catch(err => console.log(err))
 	},[])

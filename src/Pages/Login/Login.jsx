@@ -22,8 +22,12 @@ const Login = () => {
 
     .then(result => {
       const user = result.user;
-      console.log(user)
-      setUserToDb(user.displayName, user.email, user.photoURL)
+      const userInfo ={
+        name: user.displayName,
+        email: user.email,
+        image: user.photoURL,
+      }
+      setUserToDb(userInfo)
       setLoading(false)
       navigate(from, {replace: true})
       toast.success('Successfully login')
@@ -41,12 +45,15 @@ const Login = () => {
     signInWithGoogle()
     .then(result =>{
       const user = result.user
-      setUserToDb(user.displayName, user.email, user.photoURL)
-      .then(data => {
-        setLoading(false)
-        navigate(from, {replace: true})
+      const userInfo ={
+        name: user.displayName,
+        email: user.email,
+        image: user.photoURL,
+      }
+      setUserToDb(userInfo)
+      navigate(from, {replace: true})
         toast.success('Successfully login')
-      }).catch(err=> console.log(err))
+      
     })
     .catch(err => console.log(err))
   }

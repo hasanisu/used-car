@@ -13,6 +13,8 @@ const Navbar = () => {
         logOut()
   }
 
+ 
+
 
 
   return (
@@ -27,7 +29,7 @@ const Navbar = () => {
           <div className="flex-none gap-2">
             <div className="mr-10">
               <h2 className="ml-5 -mt-4">+{userCart?.length}</h2>
-            <FaShoppingCart className="w-8 h-6 text-orange-500 -mt-2"/>
+            <Link to='dashboard/my-wishlist'><FaShoppingCart className="w-8 h-6 text-orange-500 -mt-2"/></Link>
             </div>
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

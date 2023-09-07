@@ -1,7 +1,8 @@
 import React from "react";
 
-const WishlistTable = ({cart, i}) => {
-    const {carImage, sellingPrice, modelName, makerName} = cart;
+const WishlistTable = ({cart, i, handleToDelete}) => {
+    const {carImage, sellingPrice, modelName, makerName, _id} = cart;
+    console.log(cart)
 
     
     
@@ -35,7 +36,7 @@ const WishlistTable = ({cart, i}) => {
       </td>
       <td>Purple</td>
       <th>
-        <button className="btn btn-ghost btn-sm">X</button>
+        <button onClick={()=>handleToDelete(_id)} className="btn btn-ghost btn-sm">X</button>
       </th>
     </tr>
   );

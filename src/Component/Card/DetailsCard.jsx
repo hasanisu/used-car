@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast";
 import useCart from "../../hooks/useCart";
 
 const DetailsCard = ({ arrival }) => {
-  const { modelName, makerName, sellingPrice, carImage, kilometer, _id, sale, seller } = arrival;
+  const { modelName, makerName, sellingPrice, carImage, kilometer, _id, sale, seller, color } = arrival;
 
   const {user} = useContext(AuthContext)
   const [, ,refetch] = useCart()
@@ -23,15 +23,17 @@ const DetailsCard = ({ arrival }) => {
         sellingPrice, 
         carImage, 
         carId:_id,
+        color,
         wishlist:'yes',
         name: user?.displayName,
         email: user?.email
+
         
       }
 
         addToWishlist(addToCart).then(data =>{
           console.log(data)
-          if(data.insertedId ){
+          if(data.insertedId){
             refetch();
             toast.success('added to your cart list')
           }

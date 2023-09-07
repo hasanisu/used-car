@@ -15,6 +15,7 @@ import AddProduct from "../Pages/DashboardContent/AddProduct";
 
 import MyProducts from "../Pages/DashboardContent/MyProducts";
 import MyWishlist from "../Pages/DashboardContent/MyWishlist";
+import Allusers from "../Component/DashBoard/Allusers";
 
 export const router = createBrowserRouter([
     {
@@ -76,7 +77,11 @@ export const router = createBrowserRouter([
             {
                 path:'my-wishlist',
                 element: <MyWishlist/>
-            }
+            },
+            {
+                path:'all-users',
+                element: <Allusers/>
+            },
         ]
     }
 ])

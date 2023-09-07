@@ -38,6 +38,7 @@ const AuthProvider = ({children}) => {
 
     const logOut = ()=>{
         setLoading(true)
+        localStorage.removeItem('usedcar-token')
         return signOut(auth)
     }
 
