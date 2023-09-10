@@ -9,9 +9,11 @@ import UserPanel from "./UserPanel";
 const Sidebar = () => {
   const { user } = useContext(AuthContext);
   const [role, setRole] = useState(null)
+
   useEffect(() => {
     getRole(user?.email)
       .then(data => {
+        console.log(data)
         setRole(data)
       })
   }, [user])

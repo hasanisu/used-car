@@ -46,7 +46,7 @@ const Signup = () => {
               email: data.email,
               image: imgData.data.url,
               companyName: data.company,
-              status: 'Not Verified',
+              status: 'not verified',
               role: 'seller'
              }
     

@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 
 
 export const setUserToDb = (currentUser) => {
@@ -15,7 +14,7 @@ export const setUserToDb = (currentUser) => {
         console.log(data)
 
          //save token  to in local storage 
-         localStorage.setItem('usedcar-token', data.token)
+         localStorage.setItem('usedCar-token', data.token)
     })
 }
 
@@ -44,7 +43,11 @@ export const sellerRequest = async sellerData => {
 // Get role 
 export const getRole = async email => {
     const url = `http://localhost:5000/user/${email}`;
-    const res = await fetch(url);
+    const res = await fetch(url, {
+        headers:{
+            authorization: `bearer ${localStorage.getItem('usedCar-token')}`
+        }
+    });
     const user = await res.json();
     return user?.role
 
@@ -61,19 +64,6 @@ export const getSellerStatus = async email => {
 
 }
 
-
-export const makeSeller = async user => {
-    delete user._id
-    const res = await fetch(`http://localhost:5000/user/${user?.email}`, {
-        method: 'PUT',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({ ...user, role: 'seller' })
-    })
-    const data = await res.json()
-    return data;
-}
 
 //Email
 export const getSellerProducts = async (email) => {
@@ -94,6 +84,11 @@ export const allWishlistByEmail = async(email) =>{
     return data;
 }
 
+
+
+
+
+
 // set wishlist to cart
 export const addToWishlist = async (addToCart) => {
     const url = `http://localhost:5000/carts`
@@ -108,6 +103,9 @@ export const addToWishlist = async (addToCart) => {
     return data
 }
 
+
+
+
 //delete wishlist
 export const deleteToWishlist = async(id)=>{
     const url = `http://localhost:5000/carts/${id}`
@@ -119,14 +117,75 @@ export const deleteToWishlist = async(id)=>{
 }
 
 
+
+
 //Get all user For Admin
 export const getAllUser = async () =>{
     const url = `http://localhost:5000/users`;
     const res = await fetch(url,{
         headers: {
-            authorization: `bearer ${localStorage.getItem('usedcar-token')}`
+            authorization: `bearer ${localStorage.getItem('usedCar-token')}`
         }
     })
     const data = await res.json();
     return data
+}
+
+
+
+
+//Make Seller
+export const makeSeller = async user => {
+    delete user._id
+    const res = await fetch(`http://localhost:5000/user/${user?.email}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({...user, role: 'seller'})
+    })
+    const data = await res.json()
+    return data;
+}
+
+
+// Get All Sellers
+export const getAllSellers = async () =>{
+    const url = `http://localhost:5000/sellers`;
+    const res = await fetch(url,{
+        headers: {
+            authorization: `bearer ${localStorage.getItem('usedCar-token')}`
+        }
+    })
+    const data = await res.json();
+    return data
+}
+
+
+// Get All Buyers
+export const getAllBuyers = async () =>{
+    const url = `http://localhost:5000/buyers`;
+    const res = await fetch(url,{
+        headers: {
+            authorization: `bearer ${localStorage.getItem('usedCar-token')}`
+        }
+    })
+    const data = await res.json();
+    return data
+}
+
+
+
+//verified Seller
+export const verifiedSeller = async user => {
+    delete user._id
+    const res = await fetch(`http://localhost:5000/user/${user?.email}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({...user, status: 'verified'})
+    })
+    const data = await res.json()
+    return data;
 }
