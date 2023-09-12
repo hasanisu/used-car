@@ -1,8 +1,7 @@
 import React from 'react';
 
-const TableRow = ({ product }) => {
-    const { makerName, modelName, postDate, kilometer, sellingPrice, color, carImage } = product;
-    console.log(product)
+const TableRow = ({ product, handleRequest, getPaidStatus }) => {
+    const { makerName, modelName, postDate, kilometer, sellingPrice, color, carImage, productStatus, _id } = product;
     return (
 
         <tr>
@@ -31,11 +30,17 @@ const TableRow = ({ product }) => {
                 <p className="">{color}</p>
             </th>
             <th>
-                <select className="btn btn-xs btn-primary select w-32">
-                    <option disabled selected>Status</option>
-                    <option className='btn'>Sold</option>
-                    <option className='btn'>Available</option>
-                </select>
+                <div>
+                    <select onChange={getPaidStatus}  className="select select-bordered uppercase w-32 mr-2">
+                        <option disabled selected className='text-center'>{productStatus === 'sold' || productStatus === 'add-in-house' ? productStatus : 'in-house'}</option>
+                        <option className='btn'>sold</option>
+                        <option className='btn'>in-house</option>
+                        <option className='btn'>add-in-house</option>
+                    </select>
+                    <button onClick={()=> handleRequest(_id)} className="btn btn-xs rounded-full btn-outline btn-primary">Add</button>
+            
+                </div>
+
             </th>
             <th>
                 <button className="btn btn-sm btn-circle">

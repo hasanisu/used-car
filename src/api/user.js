@@ -189,3 +189,17 @@ export const verifiedSeller = async user => {
     const data = await res.json()
     return data;
 }
+
+//verified Seller
+// export const statsuPaid = async products => {
+    
+//     const res = await fetch(`http://localhost:5000/all-car/${products?._id}`, {
+//         method: 'PATCH',
+//         headers: {
+//             'content-type': 'application/json'
+//         },
+//         body: JSON.stringify(products)
+//     })
+//     const data = await res.json()
+//     return data;
+// }

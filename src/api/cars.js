@@ -54,4 +54,13 @@ export const addToProductDb = async(carData)=>{
 }
 
 
+//Get all cars 
+export const getAllCars = async ()=>{
+    const url = 'http://localhost:5000/all-car'
+    const res = await fetch(url)
+    const data = await res.json()
+    return data
+}
+
+
     

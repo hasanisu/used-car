@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 const AccountOpeningDiscount = () => {
     return (
-        <div className="card w-72 bg-base-400 shadow-xl">
+        <div className="card w-72 bg-base-400 shadow-xl mt-20">
             <div className="card-body bg-lime-700">
                 <h2 className="text-3xl text-center">Create Account</h2>
                 <div className='flex'>
