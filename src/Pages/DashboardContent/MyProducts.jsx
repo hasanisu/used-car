@@ -43,10 +43,15 @@ const MyProducts = () => {
         })
       }
 
-
       const getPaidStatus = (event)=>{
         console.log(event.target.value)
         setProductStatus(event.target.value)
+    }
+
+
+
+    const handleToUpdate = (id)=>{
+        console.log(id)
     }
 
 
@@ -62,7 +67,7 @@ const MyProducts = () => {
                 <table className="table">
                     {/* head */}
                     <thead className='bg-gray-700 static '>
-                        <tr className='text-lg'>
+                        <tr className='text-lg uppercase'>
                             <th></th>
                             <th>Maker</th>
                             <th>Post-date</th>
@@ -76,10 +81,12 @@ const MyProducts = () => {
                     <tbody>
                         
                         {
-                            products.map(product => <TableRow key={product._id} 
+                            products.map((product, i) => <TableRow key={product._id} 
                             product={product}
+                            i={i}
                             handleRequest={handleRequest}
                             getPaidStatus={getPaidStatus}
+                            handleToUpdate={handleToUpdate}
                             >
 
                             </TableRow>)
