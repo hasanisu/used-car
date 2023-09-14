@@ -25,7 +25,7 @@ const MyProducts = () => {
         })
     }
 
-    const handleRequest=(id)=>{
+    const handleToUpdateStatus=(id)=>{
         fetch(`http://localhost:5000/all-car/${id}`, {
             method: 'PATCH',
             headers: {
@@ -44,7 +44,6 @@ const MyProducts = () => {
       }
 
       const getPaidStatus = (event)=>{
-        console.log(event.target.value)
         setProductStatus(event.target.value)
     }
 
@@ -84,7 +83,7 @@ const MyProducts = () => {
                             products.map((product, i) => <TableRow key={product._id} 
                             product={product}
                             i={i}
-                            handleRequest={handleRequest}
+                            handleToUpdateStatus={handleToUpdateStatus}
                             getPaidStatus={getPaidStatus}
                             handleToUpdate={handleToUpdate}
                             >

@@ -6,6 +6,7 @@ export const setUserToDb = (currentUser) => {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
+            authorization: `bearer ${localStorage.getItem('usedCar-token')}`
         },
         body: JSON.stringify(currentUser)
     })

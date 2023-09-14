@@ -1,62 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import Spinner from '../Loader/Spinner';
+import React from 'react';
 import DatePicker from "react-datepicker";
-import { reconCarCategories } from '../../api/cars';
+import Spinner from '../Loader/Spinner';
 
-const AddProductUpdateModal = ({product,startDate, 
-    setStartDate, handleToUpdate,
-    getProductionId, getTransmissionType, getLocationInfo, loading}) => {
+const UpdateProductForm = (
+    {
+    value,
+    startDate,
+    setStartDate,
+    brandId,
+    getBrandId, 
+    getProductionId,
+    getTransmissionType,
+    handleToAddProduct,
+    loading,
+    getLocationInfo,
+    singleProduct
+    }
+) => {
     
-
-
-
-    const { makerName, 
-        modelName, 
-        postDate, 
-        kilometer,  
-        color, 
-        carImage, 
-        productStatus, 
-        _id,
+    const { makerName, modelName, 
+        postDate, kilometer, sellingPrice, color, 
+        carImage, productStatus, _id,
         brand_id,
         productionYear,
         buyingPrice,
-        sellingPrice,
-        transmission,
-        sale,
         carProblem,
         features,
-        seller,       
-    } = product;
-
-
-
-
-
-
-
+        seller,
+        sale
+    } = singleProduct;
     return (
         <div>
-            {/* The button to open modal */}
-           
-
-            {/* Put this part before </body> tag */}
-            <input type="checkbox" id="product-update-modal" className="modal-toggle" />
-            <div className="modal ">
-                <div className="modal-box max-w-4xl">
-                <div>
             <div className='flex justify-center mx-auto max-w-4xl'>
-                <form onSubmit={handleToUpdate} className=" card flex-shrink-0 w-full shadow-2xl bg-base-100">
+                <form onSubmit={handleToAddProduct} className=" card flex-shrink-0 w-full shadow-2xl bg-base-100">
                     <div className="card-body">
 
-                        {/* <div className='flex justify-between gap-4'>
+                        <div className='flex justify-between gap-4'>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Category</span>
                                 </label>
 
-                                <select onChange={getBrandId}  className="select select-bordered">
-                                    <option disabled selected></option>
+                                <select onChange={getBrandId} className="select select-bordered" required>
+                                    <option disabled required selected>Select</option>
                                     {value?.map(cat =>
 
                                     <option key={cat._id} value={cat.category_id}>
@@ -70,10 +56,10 @@ const AddProductUpdateModal = ({product,startDate,
                                 <label className="label">
                                     <span className="label-text">Brand Id</span>
                                 </label>
-                                        
-                                <input type="text" name="" id="" defaultValue={brand_id} readOnly className="input input-bordered" />
+
+                                <input type="text" name="" id="" defaultValue={brandId} readOnly className="input input-bordered" />
                             </div>
-                        </div> */}
+                        </div>
 
 
                         <div className='flex justify-between gap-4'>
@@ -81,13 +67,13 @@ const AddProductUpdateModal = ({product,startDate,
                                 <label className="label">
                                     <span className="label-text">Maker Name</span>
                                 </label>
-                                <input name='maker' type="text" placeholder="maker name" defaultValue={makerName} className="input input-bordered text-md uppercase" />
+                                <input name='maker' type="text" placeholder="email" defaultValue={makerName} className="input input-bordered text-md uppercase" />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Model Name</span>
                                 </label>
-                                <input name='model' type="text" placeholder="Model" defaultValue={modelName} className="input input-bordered text-md uppercase" />
+                                <input name='model' type="text" placeholder="password" defaultValue={modelName} className="input input-bordered text-md uppercase" />
                             </div>
                         </div>
 
@@ -123,7 +109,7 @@ const AddProductUpdateModal = ({product,startDate,
 
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text">Modification Date</span>
+                                    <span className="label-text">Modify Date</span>
                                 </label>
 
                                 <DatePicker 
@@ -147,13 +133,13 @@ const AddProductUpdateModal = ({product,startDate,
                                 <label className="label">
                                     <span className="label-text">Buying Price</span>
                                 </label>
-                                <input name='buying' type="text" placeholder="buying price" defaultValue={buyingPrice} className="input input-bordered text-md" />
+                                <input name='buying' type="text" defaultValue={buyingPrice} placeholder="buying price" className="input input-bordered text-md" />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Selling Price</span>
                                 </label>
-                                <input name='selling' type="text" placeholder="selling price" defaultValue={sellingPrice} className="input input-bordered text-md" />
+                                <input name='selling' type="text" defaultValue={sellingPrice} placeholder="selling price" className="input input-bordered text-md" />
                             </div>
                         </div>
 
@@ -162,15 +148,15 @@ const AddProductUpdateModal = ({product,startDate,
                                 <label className="label">
                                     <span className="label-text">Kilometer</span>
                                 </label>
-                                <input name='kilometer' type="number" placeholder="kilometer" defaultValue={kilometer} className="input input-bordered" />
+                                <input name='kilometer' type="number" defaultValue={kilometer} placeholder="kilometer" className="input input-bordered" />
                             </div>
 
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text ">Transmission</span>
                                 </label>
-                                <select onChange={getTransmissionType} className="select select-bordered" required>
-                                    <option disabled selected>{transmission}</option>
+                                <select onChange={getTransmissionType} className="select select-bordered">
+                                    <option disabled selected>Select</option>
                                     <option>Automatic</option>
                                     <option>Manual</option>
 
@@ -182,13 +168,13 @@ const AddProductUpdateModal = ({product,startDate,
                                 <label className="label">
                                     <span className="label-text">Color</span>
                                 </label>
-                                <input name='color' type="text" placeholder="color" defaultValue={color} className="input input-bordered text-md uppercase" />
+                                <input name='color' type="text" defaultValue={color} placeholder="color" className="input input-bordered text-md uppercase" />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Sale</span>
                                 </label>
-                                <input name='sale' type="text" placeholder="sale" defaultValue={sale} className="input input-bordered text-md uppercase" />
+                                <input name='sale' type="text" defaultValue={sale} placeholder="sale" className="input input-bordered text-md uppercase" />
                             </div>
                         </div>
 
@@ -213,7 +199,7 @@ const AddProductUpdateModal = ({product,startDate,
                                 <label className="label">
                                     <span className="label-text">Location</span>
                                 </label>
-                                <select onChange={getLocationInfo} className="select select-bordered text-md uppercase" required>
+                                <select onChange={getLocationInfo} className="select select-bordered text-md uppercase">
                                     <option disabled selected>{seller.location}</option>
                                     <option>Tokyo</option>
                                     <option>Chiba</option>
@@ -247,20 +233,14 @@ const AddProductUpdateModal = ({product,startDate,
 
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">
-                                {loading ? <Spinner/> : 'Add Product'}
+                                {loading ? <Spinner/> : 'Update Product'}
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-                    <div className="modal-action">
-                        <label htmlFor="product-update-modal" className="btn">Close!</label>
-                    </div>
-                </div>
-            </div>
-        </div>
     );
 };
 
-export default AddProductUpdateModal;
+export default UpdateProductForm;

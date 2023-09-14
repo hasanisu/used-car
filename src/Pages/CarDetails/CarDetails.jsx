@@ -3,29 +3,39 @@ import { useLoaderData } from "react-router-dom";
 
 const CarDetails = () => {
   const allCars = useLoaderData();
-  const { img, maker, model, transmission, price, sale, color, arrival_year } =
+  const { makerName, modelName, transmission, features, carProblem, sale, sellingPrice, color, carImage, arrival_year,postDate } =
     allCars;
 
   return (
     <div className="mt-16">
       <div className="md:flex justify-between">
-        <h2 className=" uppercase">CAR MAKER: <span className="font-semibold text-primary">{maker}</span></h2>
+       <div>
+       <h2 className=" uppercase">CAR MAKER: <span className="font-semibold text-primary">{makerName}</span></h2>
+        <p className=" uppercase">Post Date: <span className="font-semibold text-primary">{postDate}</span></p>
+       </div>
         <div>
           <button className="btn btn-xs btn-primary">BuyNow</button>
-          <p className="text-2xl">Price: <span className="text-primary text-xl">${price}</span></p>
+          <p className="text-2xl">Price: <span className="text-primary text-xl">¥{sellingPrice}</span></p>
           <p>Save: <span className="text-primary">{sale}%</span> as of current published</p>
         </div>
       </div>
-      <img src={img} alt='' />
-      <p className="text-primary text-2xl">Model: <span className="text-white text-xl">{model}</span></p>
+      <img src={carImage} alt='' />
+      <p className="text-primary text-2xl">Model: <span className="text-white text-xl uppercase">{modelName}</span></p>
       <div>
         <h2 className="mt-5 text-2xl">Features</h2>
-        <hr />
+        <hr className="mb-5"/>
         <p className="text-2xl">Transmission: {transmission}</p>
 
+        <p className="text-2xl">Good Point: {features}</p>
+
         <p className="text-2xl">color: {color}</p>
+
+        <p className="text-2xl">Problems: {carProblem}</p>
       </div>
-      <p className="mt-5 text-2xl">Description</p>
+
+
+
+      <p className="text-2xl mt-20">Description</p>
       <hr />
       <span className="text-xl">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae autem

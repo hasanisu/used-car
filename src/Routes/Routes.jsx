@@ -18,6 +18,7 @@ import MyWishlist from "../Pages/DashboardContent/MyWishlist";
 import Allusers from "../Component/DashBoard/Allusers";
 import AllSellers from "../Pages/DashboardContent/AllSellers";
 import AllBuyers from "../Pages/DashboardContent/AllBuyers";
+import UpdateProduct from "../Pages/DashboardContent/UpdateProduct";
 
 export const router = createBrowserRouter([
     {
@@ -91,6 +92,11 @@ export const router = createBrowserRouter([
             {
                 path:'all-buyers',
                 element: <AllBuyers/>
+            },
+            {
+                path:'update-product/:id',
+                element: <UpdateProduct/>,
+                loader: ({params})=> fetch(`http://localhost:5000/all-car/${params.id}`)
             },
         ]
     }

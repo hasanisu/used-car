@@ -14,6 +14,7 @@ const DetailsCard = ({ arrival }) => {
   const [, ,refetch] = useCart()
   
 
+  
   const handleToCart= () => {
 
     if(user){

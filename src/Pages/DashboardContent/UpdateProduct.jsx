@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useContext } from 'react';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-import { addToProductDb, reconCarCategories } from '../../api/cars';
+import React, { useContext, useEffect, useState } from 'react';
+import { reconCarCategories } from '../../api/cars';
 import { getImageUrl } from '../../api/imageUpload';
-import AddProductForm from '../../Component/Form/AddProductForm';
-import { AuthContext } from '../../context/AuthProvider';
 import { getSellerStatus } from '../../api/user';
+import AddProductForm from '../../Component/Form/AddProductForm';
+import UpdateProductForm from '../../Component/Form/UpdateProductForm';
+import { AuthContext } from '../../context/AuthProvider';
+import { useLoaderData } from 'react-router-dom'
 
-const AddProduct = () => {
+const UpdateProduct = () => {
+    const singleProduct = useLoaderData();
+    // console.log(singleProduct)
     const { user } = useContext(AuthContext)
     const [value, setValue] = useState(null)
     const [startDate, setStartDate] = useState(new Date());
@@ -19,7 +20,7 @@ const AddProduct = () => {
     const [transmission, setTransmission] = useState(null)
     const [userLocation, setUserLocation] = useState(null)
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     useEffect(() => {
         reconCarCategories().then(data => {
@@ -34,12 +35,6 @@ const AddProduct = () => {
 
             })
     }, [user])
-
-    //for getting category brand id
-    // const getCategoryName = (event) => {
-    //     console.log(event.target)
-    //     setCartegory(event.target.value)
-    // }
 
 
     //for getting category brand id
@@ -81,7 +76,7 @@ const AddProduct = () => {
         const features = form.features.value;
         const phone = form.phone.value;
         const sale = form.sale.value;
-        console.log(kilometer)
+        // console.log(kilometer, maker, model, image, buying, selling, color, problems, features, phone, sale)
 
         setLoading(true)
         getImageUrl(image)
@@ -92,7 +87,7 @@ const AddProduct = () => {
                     modelName: model,
                     carImage: data,
                     productionYear: parseFloat(productionYear),
-                    postDate: startDate,
+                    modifyDate: startDate,
                     buyingPrice: buying,
                     sellingPrice: selling,
                     kilometer: parseInt(kilometer),
@@ -112,15 +107,20 @@ const AddProduct = () => {
                         phone: phone,
                     }
                 }
-                addToProductDb(carData)
+                fetch(`http://localhost:5000/all-car/${singleProduct._id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify()
+                })
+                    .then(res => res.json(carData))
                     .then(data => {
                         console.log(data)
-                        setLoading(false)
-                        toast.success('Your post successfully added')
-                        navigate('/dashboard/my-product')
-                    }).catch(err => {
-                        console.log(err)
-                        setLoading(false)
+                        if (data.modifiedCount) {
+
+
+                        }
                     })
             }
 
@@ -141,7 +141,7 @@ const AddProduct = () => {
     return (
         <div className="mb-10 mt-20">
             <h2 className='text-center text-2xl'>Add your product</h2>
-            <AddProductForm
+            <UpdateProductForm
                 value={value}
                 setValue={setValue}
                 startDate={startDate}
@@ -158,6 +158,7 @@ const AddProduct = () => {
                 handleToAddProduct={handleToAddProduct}
                 loading={loading}
                 getLocationInfo={getLocationInfo}
+                singleProduct={singleProduct}
 
 
 
@@ -166,4 +167,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;
