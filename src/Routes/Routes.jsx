@@ -19,6 +19,8 @@ import Allusers from "../Component/DashBoard/Allusers";
 import AllSellers from "../Pages/DashboardContent/AllSellers";
 import AllBuyers from "../Pages/DashboardContent/AllBuyers";
 import UpdateProduct from "../Pages/DashboardContent/UpdateProduct";
+import AdminRoutes from "./AdminRoutes";
+import HostRoutes from "./HostRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -63,39 +65,39 @@ export const router = createBrowserRouter([
         children:[
             {
                 path:'',
-                element: <Welcome/>
+                element: <PrivateRoute><Welcome/></PrivateRoute>
             },
             {
                 path:'become-a-seller',
-                element:<BecomeAseller/>
+                element:<PrivateRoute><BecomeAseller/></PrivateRoute>
             },
             {
                 path:'add-product',
-                element: <AddProduct/>
+                element: <HostRoutes><AddProduct/></HostRoutes>
             },
             {
                 path:'my-product',
-                element: <MyProducts/>
+                element: <HostRoutes><MyProducts/></HostRoutes>
             },
             {
                 path:'my-wishlist',
-                element: <MyWishlist/>
+                element: <PrivateRoute><MyWishlist/></PrivateRoute>
             },
             {
                 path:'all-users',
-                element: <Allusers/>
+                element: <AdminRoutes><Allusers/></AdminRoutes>
             },
             {
                 path:'all-sellers',
-                element: <AllSellers/>
+                element: <AdminRoutes><AllSellers/></AdminRoutes>
             },
             {
                 path:'all-buyers',
-                element: <AllBuyers/>
+                element: <AdminRoutes><AllBuyers/></AdminRoutes>
             },
             {
                 path:'update-product/:id',
-                element: <UpdateProduct/>,
+                element: <HostRoutes><UpdateProduct/></HostRoutes>,
                 loader: ({params})=> fetch(`http://localhost:5000/all-car/${params.id}`)
             },
         ]

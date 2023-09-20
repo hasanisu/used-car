@@ -6,6 +6,7 @@ import TableRow from '../../Component/Card/TableRow';
 import MainLoader from '../../Component/Loader/MainLoader';
 import AuthProvider, { AuthContext } from '../../context/AuthProvider';
 
+
 const MyProducts = () => {
     const {user} = useContext(AuthContext)
     
@@ -25,11 +26,15 @@ const MyProducts = () => {
         })
     }
 
+
+
+// For update product status 
     const handleToUpdateStatus=(id)=>{
         fetch(`http://localhost:5000/all-car/${id}`, {
             method: 'PATCH',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('usedCar-token')}`
             },
             body: JSON.stringify({productStatus: productStatus})
         })
@@ -49,8 +54,28 @@ const MyProducts = () => {
 
 
 
-    const handleToUpdate = (id)=>{
-        console.log(id)
+
+//For delete product
+    const handleToDelete = (id)=>{
+        // const isProcced = window.confirm(`Are you want to delete this id ${id}`)
+        
+            fetch(`http://localhost:5000/all-car/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('usedCar-token')}`
+            },
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.deletedCount){
+                console.log(data)
+                toast.success('product has been deleted succesfully')
+                getProduct();
+            }
+        })
+        
     }
 
 
@@ -62,7 +87,8 @@ const MyProducts = () => {
             products.length > 0 ?  <div className=''>
             {loading ? <MainLoader/> :
             <div className='px-4'>
-            <div className="overflow-x-auto scroll-m-2">
+                {/* className="overflow-x-auto scroll-m-2" */}
+            <div >
                 <table className="table">
                     {/* head */}
                     <thead className='bg-gray-700 static '>
@@ -72,6 +98,10 @@ const MyProducts = () => {
                             <th>Post-date</th>
                             <th>Kilometer</th>
                             <th>Selling Price</th>
+                            <th>Buying Price</th>
+                            <th>Transmission</th> 
+                            <th>Location</th> 
+                            <th>Sale</th> 
                             <th>color</th>
                             <th>status</th>
                             <th>action</th>
@@ -85,7 +115,7 @@ const MyProducts = () => {
                             i={i}
                             handleToUpdateStatus={handleToUpdateStatus}
                             getPaidStatus={getPaidStatus}
-                            handleToUpdate={handleToUpdate}
+                            handleToDelete={handleToDelete}
                             >
 
                             </TableRow>)

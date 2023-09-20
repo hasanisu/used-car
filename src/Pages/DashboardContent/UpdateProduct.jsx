@@ -5,22 +5,26 @@ import { getSellerStatus } from '../../api/user';
 import AddProductForm from '../../Component/Form/AddProductForm';
 import UpdateProductForm from '../../Component/Form/UpdateProductForm';
 import { AuthContext } from '../../context/AuthProvider';
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast';
 
 const UpdateProduct = () => {
     const singleProduct = useLoaderData();
-    // console.log(singleProduct)
+    const {seller, brand_id, productionYear, transmission} = singleProduct;
+    
     const { user } = useContext(AuthContext)
     const [value, setValue] = useState(null)
     const [startDate, setStartDate] = useState(new Date());
     // const [carCetegory, setCartegory] = useState(null)
-    const [userStatus, setUserStatus] = useState(null)
-    const [brandId, setBrandId] = useState(null)
-    const [productionYear, setProductionYear] = useState(null)
-    const [transmission, setTransmission] = useState(null)
-    const [userLocation, setUserLocation] = useState(null)
+    const [userStatus, setUserStatus] = useState('')
+    const [brandId, setBrandId] = useState(brand_id)
+    const [carProductionYear, setCarProductionYear] = useState(productionYear)
+    const [carTransmission, setCarTransmission] = useState(transmission)
+    const [userLocation, setUserLocation] = useState(seller.location)
     const [loading, setLoading] = useState(false)
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
+    console.log(userLocation, brandId, carProductionYear, carTransmission)
+
 
     useEffect(() => {
         reconCarCategories().then(data => {
@@ -39,21 +43,33 @@ const UpdateProduct = () => {
 
     //for getting category brand id
     const getBrandId = (event) => {
+        if(singleProduct){
+            setBrandId(singleProduct.brand_id)
+        }
         setBrandId(event.target.value)
     }
 
     //for getting year of production
     const getProductionId = (event) => {
-        setProductionYear(event.target.value)
+        if(singleProduct){
+            setCarProductionYear(singleProduct.productionYear)
+        }
+        setCarProductionYear(event.target.value)
     }
 
     //for getting Transmission
     const getTransmissionType = (event) => {
-        setTransmission(event.target.value)
+        if(singleProduct){
+            setCarTransmission(singleProduct.transmission)
+        }
+        setCarTransmission(event.target.value)
     }
 
     //for getting Location
     const getLocationInfo = (event) => {
+        if(singleProduct){
+            setUserLocation(singleProduct.seller.location)
+        }
         setUserLocation(event.target.value)
     }
 
@@ -86,12 +102,12 @@ const UpdateProduct = () => {
                     makerName: maker,
                     modelName: model,
                     carImage: data,
-                    productionYear: parseFloat(productionYear),
+                    productionYear: parseFloat(carProductionYear),
                     modifyDate: startDate,
-                    buyingPrice: buying,
-                    sellingPrice: selling,
+                    buyingPrice: parseInt(buying),
+                    sellingPrice: parseInt(selling),
                     kilometer: parseInt(kilometer),
-                    transmission: transmission,
+                    transmission: carTransmission,
                     color: color,
                     sale: parseFloat(sale),
                     carProblem: problems,
@@ -112,14 +128,15 @@ const UpdateProduct = () => {
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify()
+                    body: JSON.stringify(carData)
                 })
-                    .then(res => res.json(carData))
+                    .then(res => res.json())
                     .then(data => {
                         console.log(data)
                         if (data.modifiedCount) {
-
-
+                            setLoading(false)
+                            toast.success('product updated successfully')
+                            navigate('my-product')
                         }
                     })
             }
@@ -142,23 +159,23 @@ const UpdateProduct = () => {
         <div className="mb-10 mt-20">
             <h2 className='text-center text-2xl'>Add your product</h2>
             <UpdateProductForm
-                value={value}
-                setValue={setValue}
-                startDate={startDate}
-                setStartDate={setStartDate}
-                brandId={brandId}
-                setBrandId={setBrandId}
-                productionYear={productionYear}
-                setProductionYear={setProductionYear}
-                transmission={transmission}
-                setTransmission={setTransmission}
-                getBrandId={getBrandId}
-                getProductionId={getProductionId}
-                getTransmissionType={getTransmissionType}
-                handleToAddProduct={handleToAddProduct}
-                loading={loading}
-                getLocationInfo={getLocationInfo}
-                singleProduct={singleProduct}
+                 value={value}
+                 setValue={setValue}
+                 startDate={startDate}
+                 setStartDate={setStartDate}
+                 brandId={brandId}
+                 setBrandId={setBrandId}
+                 productionYear={productionYear}
+                 setCarProductionYear={setCarProductionYear}
+                 transmission={transmission}
+                 setCarTransmission={setCarTransmission}
+                 getBrandId={getBrandId}
+                 getProductionId={getProductionId}
+                 getTransmissionType={getTransmissionType}
+                 handleToAddProduct={handleToAddProduct}
+                 loading={loading}
+                 getLocationInfo={getLocationInfo}
+                 singleProduct={singleProduct}
 
 
 
