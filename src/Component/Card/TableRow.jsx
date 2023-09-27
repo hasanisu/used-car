@@ -4,28 +4,35 @@ import { reconCarCategories } from '../../api/cars';
 import { getImageUrl } from '../../api/imageUpload';
 import { AuthContext } from '../../context/AuthProvider';
 import AddProductUpdateModal from '../Modal/AddProductUpdateModal';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaTrashAlt, FaSync } from "react-icons/fa";
 import ConfirmationModal from '../Modal/ConfirmationModal';
+import { format } from 'date-fns';
 
-const TableRow = ({ product, i, handleToUpdateStatus, getPaidStatus, handleToDelete}) => {
-    
-    const { makerName, modelName, 
-        postDate, kilometer, sellingPrice, 
-        color, carImage, productStatus, _id, 
+const TableRow = ({ product, i, handleToUpdateStatus, getPaidStatus, handleToDelete }) => {
+
+    const { makerName, modelName,
+        postDate, kilometer, sellingPrice,
+        color, carImage, productStatus, _id,
         buyingPrice,
         transmission,
         seller,
         sale
     } = product;
 
+
     const [deletingCar, setDeletingCar] = useState(null)
 
-    const closeModal =()=>{
+    const closeModal = () => {
         setDeletingCar(null);
-      }
-    
-    
+    }
+
+
+    const buying = buyingPrice + "";
+    const selling = sellingPrice + "";
+
+
+
     return (
 
         <tr className=' uppercase'>
@@ -44,14 +51,96 @@ const TableRow = ({ product, i, handleToUpdateStatus, getPaidStatus, handleToDel
                 </div>
             </td>
             <td>
-                <span className="badge badge-ghost badge-sm">{postDate}</span>
+                <span className="badge badge-ghost badge-sm">{format(new Date(postDate), 'PP')}</span>
+                <span className="badge badge-ghost badge-sm">{format(new Date(postDate), 'PPpp').split(',')[2]}</span>
+
             </td>
             <td>{kilometer}</td>
             <th>
-                <p className="">{sellingPrice}</p>
+            ¥
+                {
+                    selling.length === 6 &&
+                    <>
+                        <span className="">{(selling).split('')[0]}</span>
+                        <span className="">{(selling).split('')[1]}</span>
+                        <span className="">{(selling).split('')[2]}</span>,
+                        <span className="">{(selling).split('')[3]}</span>
+                        <span className="">{(selling).split('')[4]}</span>
+                        <span className="">{(selling).split('')[5]}</span>
+
+
+                    </>
+                }
+
+                {
+                    selling.length === 7 &&
+                    <>
+                        <span className="">{(selling).split('')[0]}</span>,
+                        <span className="">{(selling).split('')[1]}</span>
+                        <span className="">{(selling).split('')[2]}</span>
+                        <span className="">{(selling).split('')[3]}</span>,
+                        <span className="">{(selling).split('')[4]}</span>
+                        <span className="">{(selling).split('')[5]}</span>
+                        <span className="">{(selling).split('')[6]}</span>
+                        <span className="">{(selling).split('')[7]}</span>
+                    </>
+                }
+                {
+                    selling.length === 8 &&
+                    <>
+                        <span className="">{(selling).split('')[0]}</span>
+                        <span className="">{(selling).split('')[1]}</span>,
+                        <span className="">{(selling).split('')[2]}</span>
+                        <span className="">{(selling).split('')[3]}</span>
+                        <span className="">{(selling).split('')[4]}</span>,
+                        <span className="">{(selling).split('')[5]}</span>
+                        <span className="">{(selling).split('')[6]}</span>
+                        <span className="">{(selling).split('')[7]}</span>
+                    </>
+
+                }
+                
             </th>
             <th>
-                <p className="">{buyingPrice}</p>
+                ¥
+                {
+                    buying.length === 6 &&
+                    <>
+                        <span className="">{(buying).split('')[0]}</span>
+                        <span className="">{(buying).split('')[1]}</span>
+                        <span className="">{(buying).split('')[2]}</span>,
+                        <span className="">{(buying).split('')[3]}</span>
+                        <span className="">{(buying).split('')[4]}</span>
+                        <span className="">{(buying).split('')[5]}</span>
+                    </>
+                }
+                {
+                    buying.length === 7 &&
+                    <>
+                        <span className="">{(buying).split('')[0]}</span>,
+                        <span className="">{(buying).split('')[1]}</span>
+                        <span className="">{(buying).split('')[2]}</span>
+                        <span className="">{(buying).split('')[3]}</span>,
+                        <span className="">{(buying).split('')[4]}</span>
+                        <span className="">{(buying).split('')[5]}</span>
+                        <span className="">{(buying).split('')[6]}</span>
+
+                    </>
+                }
+                {
+                    buying.length === 8 &&
+                    <>
+                        <span className="">{(buying).split('')[0]}</span>
+                        <span className="">{(buying).split('')[1]}</span>,
+                        <span className="">{(buying).split('')[2]}</span>
+                        <span className="">{(buying).split('')[3]}</span>
+                        <span className="">{(buying).split('')[4]}</span>,
+                        <span className="">{(buying).split('')[5]}</span>
+                        <span className="">{(buying).split('')[6]}</span>
+                        <span className="">{(buying).split('')[7]}</span>
+                    </>
+                }
+                
             </th>
             <th>
                 <p className="">{transmission}</p>
@@ -87,32 +176,32 @@ const TableRow = ({ product, i, handleToUpdateStatus, getPaidStatus, handleToDel
                 </label> */}
 
                 <Link to={`/dashboard/update-product/${_id}`}>
-                <button className="btn btn-xs btn-outline btn-success tooltip mt-2" data-tip="Update">
-                <FaSync className='w-4 h-6'/>
-                </button>
+                    <button className="btn btn-xs btn-outline btn-success tooltip mt-2" data-tip="Update">
+                        <FaSync className='w-4 h-6' />
+                    </button>
                 </Link>
 
                 {/* <button onClick={()=> handleToDelete(_id)} className="btn btn-sm btn-circle btn-outline btn-error tooltip" data-tip="Delete">
                 <FaTrashAlt className='w-5 h-5 ml-1'/>
                 </button> */}
 
-                <label onClick={()=>setDeletingCar(product)} htmlFor="my_modal_6" className="btn btn-sm btn-circle btn-outline btn-error tooltip" data-tip="Delete">
+                <label onClick={() => setDeletingCar(product)} htmlFor="my_modal_6" className="btn btn-sm btn-circle btn-outline btn-error tooltip" data-tip="Delete">
 
-                 <FaTrashAlt className='w-5 h-5 ml-1 mt-1'/>
+                    <FaTrashAlt className='w-5 h-5 ml-1 mt-1' />
                 </label>
 
             </th>
             {
-                deletingCar && 
+                deletingCar &&
                 <ConfirmationModal
-            closeModal={closeModal}
-            handleToDelete={handleToDelete}
-            modalData={deletingCar}
-            title={`Are you sure you want to delete?`}
-            message={`If you delete ${deletingCar.makerName} ${deletingCar.modelName}. it cannot be undone.`}
-            />
+                    closeModal={closeModal}
+                    handleToDelete={handleToDelete}
+                    modalData={deletingCar}
+                    title={`Are you sure you want to delete?`}
+                    message={`If you delete ${deletingCar.makerName} ${deletingCar.modelName}. it cannot be undone.`}
+                />
             }
-            
+
         </tr>
 
     );

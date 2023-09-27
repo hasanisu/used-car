@@ -57,13 +57,13 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Maker Name</span>
                                 </label>
-                                <input name='maker' type="text" placeholder="email" className="input input-bordered text-md uppercase" />
+                                <input name='maker' type="text" placeholder="maker" className="input input-bordered text-md uppercase" />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Model Name</span>
                                 </label>
-                                <input name='model' type="text" placeholder="password" className="input input-bordered text-md uppercase" />
+                                <input name='model' type="text" placeholder="model" className="input input-bordered text-md uppercase" />
                             </div>
                         </div>
 
@@ -123,13 +123,13 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Buying Price</span>
                                 </label>
-                                <input name='buying' type="text" placeholder="buying price" className="input input-bordered text-md" />
+                                <input name='buying' type="number" placeholder="buying price" className="input input-bordered text-md" />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Selling Price</span>
                                 </label>
-                                <input name='selling' type="text" placeholder="selling price" className="input input-bordered text-md" />
+                                <input name='selling' type="number" placeholder="selling price" className="input input-bordered text-md" />
                             </div>
                         </div>
 
@@ -164,7 +164,7 @@ const AddProductForm = ({
                                 <label className="label">
                                     <span className="label-text">Sale</span>
                                 </label>
-                                <input name='sale' type="text" placeholder="sale" className="input input-bordered text-md uppercase" />
+                                <input name='sale' type="number" placeholder="sale" className="input input-bordered text-md uppercase" />
                             </div>
                         </div>
 
