@@ -94,7 +94,7 @@ const DetailsCard = ({ arrival }) => {
           <Link to={`/car-details/${_id}`}>
             <button className="btn btn-xs btn-primary">View Details</button>
           </Link>
-          <Link to={`/car-details/${_id}`}>
+          <Link to={`/payment/${_id}`}>
             <button className="btn btn-xs btn-primary">Buy Now</button>
           </Link>
         </div>

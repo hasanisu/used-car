@@ -21,6 +21,7 @@ import AllBuyers from "../Pages/DashboardContent/AllBuyers";
 import UpdateProduct from "../Pages/DashboardContent/UpdateProduct";
 import AdminRoutes from "./AdminRoutes";
 import HostRoutes from "./HostRoutes";
+import Payment from "../Pages/CarSection/Payment/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
                 path:'/category/:id',
                 element: <ReconCarsCategory/>,
                 loader: ({params})=> fetch(`http://localhost:5000/category/${params.id}`)
+            },
+            {
+                path: '/payment',
+                element: <Payment/>
             }
         ]
     },
