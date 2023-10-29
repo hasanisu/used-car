@@ -22,6 +22,7 @@ import UpdateProduct from "../Pages/DashboardContent/UpdateProduct";
 import AdminRoutes from "./AdminRoutes";
 import HostRoutes from "./HostRoutes";
 import Payment from "../Pages/CarSection/Payment/Payment";
+import PurchaseHistory from "../Pages/DashboardContent/PurchaseHistory";
 
 export const router = createBrowserRouter([
     {
@@ -59,8 +60,9 @@ export const router = createBrowserRouter([
                 loader: ({params})=> fetch(`http://localhost:5000/category/${params.id}`)
             },
             {
-                path: '/payment',
-                element: <Payment/>
+                path: '/payment/:id',
+                element: <PrivateRoute><Payment/></PrivateRoute>,
+                loader: ({params})=> fetch(`http://localhost:5000/payment/${params.id}`)
             }
         ]
     },
@@ -105,6 +107,10 @@ export const router = createBrowserRouter([
                 element: <HostRoutes><UpdateProduct/></HostRoutes>,
                 loader: ({params})=> fetch(`http://localhost:5000/all-car/${params.id}`)
             },
+            {
+                path:'purchase-history',
+                element:<PurchaseHistory/>
+            }
         ]
     }
 ])

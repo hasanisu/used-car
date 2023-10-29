@@ -2,7 +2,8 @@ import React from "react";
 import Spinner from "../Loader/Spinner";
 
 const AllUsersTable = ({ user, i, handleRequest, loading, handleVerification }) => {
-  const { image, name, role, status } = user;
+  const { image, name, role, status, email } = user;
+
 
   return (
     <tr className="hover:bg-gray-500 rounded-lg text-md uppercase">
@@ -17,7 +18,11 @@ const AllUsersTable = ({ user, i, handleRequest, loading, handleVerification }) 
           <div>
             <div className="font-bold">{name}</div>
           </div>
+          
         </div>
+      </td>
+      <td>
+        <h2>{email}</h2>
       </td>
       <td className="">{role ? role : "user"}</td>
       <td>

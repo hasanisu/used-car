@@ -31,9 +31,10 @@ const AddProduct = () => {
         getSellerStatus(user?.email)
             .then(data => {
                 setUserStatus(data)
+                console.log(data)
 
             })
-    }, [user])
+    }, [user.email])
 
     //for getting category brand id
     // const getCategoryName = (event) => {

@@ -49,6 +49,7 @@ const Allusers = () => {
               <tr className="uppercase text-lg bg-slate-600">
                 <th>No.</th>
                 <th>Name</th>
+                <th>Email</th>
                 <th>Role</th>
                 <th>Seller Status</th>
                 <th>Action</th>

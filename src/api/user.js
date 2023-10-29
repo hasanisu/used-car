@@ -58,10 +58,13 @@ export const getRole = async email => {
 // Get role 
 export const getSellerStatus = async email => {
     const url = `http://localhost:5000/user/${email}`;
-    const res = await fetch(url);
+    const res = await fetch(url,{
+        headers:{
+            authorization: `bearer ${localStorage.getItem('usedCar-token')}`
+        }
+    });
     const user = await res.json();
     return user?.status
-
 
 }
 

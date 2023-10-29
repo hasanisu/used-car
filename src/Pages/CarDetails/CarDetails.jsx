@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const CarDetails = () => {
@@ -9,7 +9,7 @@ const CarDetails = () => {
   const { user } = useContext(AuthContext)
 
 
-  const { _id, makerName, modelName, transmission, features, carProblem, sale, sellingPrice, color, carImage, postDate, seller } =
+  const { _id, makerName, modelName, transmission, features, carProblem, sale, sellingPrice, color, carImage, postDate, seller, paid } =
     allCars;
 
 
@@ -62,7 +62,9 @@ const CarDetails = () => {
             <p className=" uppercase">Post Date: <span className="font-semibold text-primary">{postDate}</span></p>
           </div>
           <div>
-            <button className="btn btn-xs btn-primary">BuyNow</button>
+            {
+              paid ? <h2 className="text-green-600 text-lg font-semibold">SOLD-OUT</h2> : <Link to={`/payment/${_id}`}><button className="btn btn-xs btn-primary">BuyNow</button></Link>
+            }
             <p className="text-2xl">Price: <span className="text-primary text-xl">¥{sellingPrice}</span></p>
             <p>Save: <span className="text-primary">{sale}%</span> as of current published</p>
           </div>

@@ -62,5 +62,13 @@ export const getAllCars = async ()=>{
     return data
 }
 
+//Get Purchase history by email
+export const getPurchaseCarByEmail = async (email)=>{
+    const url = `http://localhost:5000/purchase-history/${email}`
+    const res = await fetch(url)
+    const data = await res.json()
+    return data
+}
+
 
     

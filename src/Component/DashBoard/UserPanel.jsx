@@ -22,7 +22,7 @@ const UserPanel = () => {
                 <Link to='become-a-seller'>Become a Seller</Link>
               </li>
               <li>
-                <Link>Purchase History</Link>
+                <Link to='purchase-history'>Purchase History</Link>
               </li>
         </div>
     );
