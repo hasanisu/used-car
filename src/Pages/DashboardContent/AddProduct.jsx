@@ -82,7 +82,8 @@ const AddProduct = () => {
         const features = form.features.value;
         const phone = form.phone.value;
         const sale = form.sale.value;
-        console.log(kilometer)
+        const engine = form.engine.value;
+        
 
         setLoading(true)
         getImageUrl(image)
@@ -102,6 +103,7 @@ const AddProduct = () => {
                     sale: parseFloat(sale),
                     carProblem: problems,
                     features: features,
+                    engine:engine,
 
 
                     seller: {

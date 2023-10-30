@@ -92,6 +92,7 @@ const UpdateProduct = () => {
         const features = form.features.value;
         const phone = form.phone.value;
         const sale = form.sale.value;
+        const engine = form.engine.value;
         // console.log(kilometer, maker, model, image, buying, selling, color, problems, features, phone, sale)
 
         setLoading(true)
@@ -112,6 +113,7 @@ const UpdateProduct = () => {
                     sale: parseFloat(sale),
                     carProblem: problems,
                     features: features,
+                    engine:engine,
 
 
                     seller: {
@@ -136,7 +138,7 @@ const UpdateProduct = () => {
                         if (data.modifiedCount) {
                             setLoading(false)
                             toast.success('product updated successfully')
-                            navigate('my-product')
+                            navigate('/dashboard/my-product')
                         }
                     })
             }

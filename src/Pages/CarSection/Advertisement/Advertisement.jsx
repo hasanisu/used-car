@@ -12,6 +12,7 @@ const Advertisement = ({ allCars }) => {
 
   return (
     <div>
+      <h2 className='text-center underline uppercase font-bold mb-2 text-red-800'>Advertisement</h2>
       {
       allCars.length > 0 && 
       <AutoplaySlider
@@ -19,6 +20,7 @@ const Advertisement = ({ allCars }) => {
       cancelOnInteraction={false} // should stop playing on user interaction
       interval={4000}
     >
+      
       
       {
         allCars.map(car => 

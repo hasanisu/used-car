@@ -27,7 +27,8 @@ const UpdateProductForm = (
         carProblem,
         features,
         seller,
-        sale
+        sale,
+        engine
     } = singleProduct;
     return (
         <div>
@@ -77,12 +78,20 @@ const UpdateProductForm = (
                             </div>
                         </div>
 
-                        <div className="form-control w-full">
+                       <div className='lg:flex justify-between gap-4'>
+                       <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Image</span>
                             </label>
                             <input name='image'  accept='image/*' type="file" placeholder="image" className="input input-bordered pt-2" required/>
                         </div>
+                        <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Engine Capacity</span>
+                                </label>
+                                <input name='engine' type="number" defaultValue={engine} placeholder="Cc" className="input input-bordered text-md" />
+                            </div>
+                       </div>
 
 
                         <div className='flex justify-between gap-4'>

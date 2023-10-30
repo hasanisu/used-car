@@ -67,11 +67,19 @@ const AddProductForm = ({
                             </div>
                         </div>
 
+                        <div className='lg:flex justify-between gap-4'>
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Image</span>
                             </label>
                             <input name='image'  accept='image/*' type="file" placeholder="image" className="input input-bordered pt-2" />
+                        </div>
+                        <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text">Engine Capacity</span>
+                                </label>
+                                <input name='engine' type="number" placeholder="Cc" className="input input-bordered text-md" />
+                            </div>
                         </div>
 
 
@@ -133,7 +141,7 @@ const AddProductForm = ({
                             </div>
                         </div>
 
-                        <div className='flex justify-between gap-4'>
+                        <div className='lg:flex justify-between gap-4'>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Kilometer</span>

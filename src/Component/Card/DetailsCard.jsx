@@ -126,9 +126,10 @@ const DetailsCard = ({ arrival }) => {
             </h2>
             <p>price: ¥{sellingPrice}</p>
             <span>kilometer: {kilometer}</span>
-            {arrival.sale > 0 && <p>Save {sale}%</p>}
+            
             <hr />
 
+            <div className="flex justify-between">
             <div className="avatar">
               {seller?.status === "verified" ? (
                 <>
@@ -142,6 +143,8 @@ const DetailsCard = ({ arrival }) => {
                   <img src={seller?.image} alt="" className="" />
                 </div>
               )}
+            </div>
+            <span className="text-orange-400">{arrival.sale > 0 && <p>SAVE-{sale}%</p>}</span>
             </div>
 
             <div className="card-actions justify-end -mt-5">

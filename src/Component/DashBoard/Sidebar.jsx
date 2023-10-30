@@ -22,7 +22,7 @@ const Sidebar = () => {
     <div className="drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 
-      <div className="drawer-side">
+      <div className="drawer-side z-10 lg:z-0">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
 
         <ul className="menu p-4 w-72 h-full bg-yellow-700 text-base-content fixed">
@@ -44,7 +44,7 @@ const Sidebar = () => {
               <UserPanel />
             </>
           )}
-          <div className="mt-96">
+          <div className="">
             <Link to='/'>
             <button className=" bg-blue-500 hover:bg-blue-300 hover:text-gray-900 w-full py-2 text-lg rounded-3xl">Bank to Home</button>
             </Link>
